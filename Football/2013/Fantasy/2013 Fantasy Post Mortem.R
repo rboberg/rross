@@ -7,6 +7,7 @@
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
 HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+#HOMEDIR <- "F:/Docs/Personal/rross"
 setwd(paste0(HOMEDIR,"/Football/2013/Fantasy"))
 
 
@@ -511,4 +512,27 @@ skillSmry
 
 #Total Skill
 skillSmry[,list(sum(SkillAddedPerGame))]
+
+######
+## MAKE CSV FOR INTERACTIVE VISUALIZATION
+# REQUIRED COLUMNS:
+### Player Name or ID
+### Position
+### Drafted By
+### Points Above Replacemtn
+### Where Drafted
+### Position Rank
+### Overall Rank
+
+draftDT <- data.table(
+  Player = player.info$name[match(rcombo$id,player.info$id)],
+  Position = rcombo$pos,
+  DraftType = rcombo$type,
+  PointsOverRep = rcombo$over.replace,
+  DraftPosition = rcombo$dp,
+  PositionRank = rcombo$pos.rank,
+  OverallRank = rank(-rcombo$over.replace)
+  )
+
+write.csv(draftDT,"mock_draft.csv",row.names=F)
 
