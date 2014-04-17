@@ -6,8 +6,8 @@
 
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
-#HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
-HOMEDIR <- "F:/Docs/Personal/rross"
+HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+#HOMEDIR <- "F:/Docs/Personal/rross"
 setwd(paste0(HOMEDIR,"/Football/2013/Fantasy"))
 
 
@@ -485,7 +485,7 @@ dpSmry.use
 #ADP placed higher value on early QBs than my Value based system
 #Picking QBs later turned out to hurt my system around 0.5 points per game
 
-write.csv(dpSmry.use,'dp_summary',row.names=F)
+write.csv(dpSmry.use,'dp_summary.csv',row.names=F)
 
 #####
 # Residual Skill
@@ -511,7 +511,8 @@ setnames(skillSmry,"pos","Position")
 skillSmry
 
 #Total Skill
-skillSmry[,list(sum(SkillAddedPerGame))]
+write.csv(skillSmry,'skill_summary.csv',row.names=F)
+
 
 ######
 ## MAKE CSV FOR INTERACTIVE VISUALIZATION
