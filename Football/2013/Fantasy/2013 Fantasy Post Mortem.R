@@ -6,8 +6,8 @@
 
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
-HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
-#HOMEDIR <- "F:/Docs/Personal/rross"
+#HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+HOMEDIR <- "F:/Docs/Personal/rross"
 setwd(paste0(HOMEDIR,"/Football/2013/Fantasy"))
 
 
@@ -434,10 +434,10 @@ dpSmry <- rcombo[,
          StartingSpots=median(start)/12,
          ValueMeanDP=mean(dp[type=="value"]),
          ADPMeanDP=mean(dp[type=="adp"]),
-         MarginalPoints=-stats['dp',pos]
+         MarginalPointsPerSeason=-stats['dp',pos]
          )],
        by="pos"]
-dpSmry[,ValueAddedPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPoints*-1]
+dpSmry[,ValueAddedPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPointsPerSeason*-1]
 dpSmry[,ValueAddedPerGame:=ValueAddedPerSeason/16]
 
 # Extreme values can have oversized effects on statistics, especially in small samples.
@@ -453,10 +453,10 @@ dpSmry.noext <- rcombo[,
                        StartingSpots=median(start)/12,
                        ValueMeanDP=mean(dp[type=="value"]),
                        ADPMeanDP=mean(dp[type=="adp"]),
-                       MarginalPoints=-stats.noext['dp',pos]
+                       MarginalPointsPerSeason=-stats.noext['dp',pos]
                      )],
                  by="pos"]
-dpSmry.noext[,ValueAddedPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPoints*-1]
+dpSmry.noext[,ValueAddedPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPointsPerSeason*-1]
 dpSmry.noext[,ValueAddedPerGame:=ValueAddedPerSeason/16]
 
 ## Try averaging betas
@@ -470,10 +470,10 @@ dpSmry.use <- rcombo[,
                              StartingSpots=median(start)/12,
                              ValueMeanDP=mean(dp[type=="value"]),
                              ADPMeanDP=mean(dp[type=="adp"]),
-                             MarginalPoints=-((stats.noext+stats)/2)['dp',pos]
+                             MarginalPointsPerSeason=-((stats.noext+stats)/2)['dp',pos]
                            )],
                        by="pos"]
-dpSmry.use[,PositionPointsPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPoints*-1]
+dpSmry.use[,PositionPointsPerSeason:=StartingSpots*(ValueMeanDP-ADPMeanDP)*MarginalPointsPerSeason*-1]
 dpSmry.use[,PositionPointsPerGame:=PositionPointsPerSeason/16]
 setnames(dpSmry.use,"pos","Position")
 
@@ -485,7 +485,7 @@ dpSmry.use
 #ADP placed higher value on early QBs than my Value based system
 #Picking QBs later turned out to hurt my system around 0.5 points per game
 
-dpSmry.use[,list(sum(ValueAddedPerGame))]
+write.csv(dpSmry.use,'dp_summary',row.names=F)
 
 #####
 # Residual Skill
