@@ -546,7 +546,7 @@ bestPicks <- rcombo[,
          list(
            Player = player.info$name[match(rcombo$id,player.info$id)],
            Position = rcombo$pos,
-           DraftType = rcombo$type,
+           DraftType = toupper(rcombo$type),
            PointsOverRep = rcombo$over.replace,
            DraftPosition = rcombo$dp,
            MeanResidual=(points-(dp*stats.use[2,pos]+stats.use[1,pos]))
