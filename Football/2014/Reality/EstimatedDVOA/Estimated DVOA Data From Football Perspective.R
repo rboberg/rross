@@ -120,4 +120,26 @@ contRanges <- function(x){
 
 teamDT[,YearsActive:=contRanges(dvoaDT[Team]$Year),by=Team]
 
+#Link to franchise encyclopedia 
 teamDT[,Link:=gsub('/(?=[^/]*$).*','/',dvoaDT[Team][1]$Link,perl=T),by=Team]
+
+#Get team XML // will take time to get HTML content from website
+teamXML <- sapply(teamDT$Link,function(x){htmlParse(x)})
+
+#Function to extract Team Name from XML
+#xmli <- htmlParse("http://www.pro-football-reference.com/teams/sdg/")
+getTeamName <- function(xmli){
+  tmText <- xmlValue(getNodeSet(xmli,"//div[@id='you_are_here']/p/strong")[[2]])
+  return(tmText)
+}
+
+#Add team name to DT
+teamDT$TeamName <- sapply(teamXML,function(x){getTeamName(x)})
+
+#Load team colors from CSV
+csvin <- data.table(read.csv("team_colors.csv",stringsAsFactors=F))
+csvin$Team <- toupper(csvin$Team)
+
+teamInfo <- merge(teamDT,csvin,all=T)
+
+write.csv(teamInfo,'team_info.csv',row.names=F)
