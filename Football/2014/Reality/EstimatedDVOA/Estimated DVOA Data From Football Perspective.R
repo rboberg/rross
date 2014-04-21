@@ -5,8 +5,9 @@
 
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
-HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
-setwd(paste0(HOMEDIR,"/Football/2014/Reality"))
+HOMEDIR <- "F:/Docs/Personal/rross"
+#HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+setwd(paste0(HOMEDIR,"/Football/2014/Reality/EstimatedDVOA"))
 
 
 ###############
@@ -73,6 +74,50 @@ for(i in 1:ncol(dvoaDF)){
   }
 }
 
-dvoaDT <- data.table(dvoaDF)
+#Replace Team Abbreviates with Pro-Football Reference Abrev
+dvoaDF$Team <- toupper(gsub('h.*/','',gsub('/(?=[^/]*$).*','',dvoaDF$Link,perl=T),perl=T))
+
+dvoaDT <- data.table(dvoaDF, key="Team,Year")
+
+
 
 write.csv(dvoaDT,'estimated_dvoa.csv',row.names=F)
+
+##########################
+### GET TEAM / FRANCHISE INFO
+
+teamDT <- data.table(Team=unique(dvoaDT$Team),key="Team")
+
+teamDT[,list(MaxYear=max(dvoaDT[Team]$Year)),by=Team]
+teamDT[,MaxYear:=max(dvoaDT[Team]$Year),by=Team]
+teamDT[,MinYear:=min(dvoaDT[Team]$Year),by=Team]
+
+#function that returns contiguous ranges as "S1-E1,S2-E2,..."
+contRanges <- function(x){
+  x <- as.numeric(x)
+  xord <- sort(x) 
+  xn <- length(xord)
+  if(xn > 1){
+  stout <- paste0(xord[1],'-')
+  lookForEnd = T
+  for(i in 2:xn){
+    if(lookForEnd){
+      if(xord[i]!= xord[i-1]+1){
+        stout <- paste0(stout,xord[i-1])
+        lookForEnd=F
+      }
+    } else{
+      stout <- paste0(stout,',',xord[i-1],'-')
+      lookForEnd=T
+    }
+  }
+  stout <- paste0(stout,xord[xn])
+  } else{
+    stout = as.character(xord[1])
+  }
+  return(stout)
+}
+
+teamDT[,YearsActive:=contRanges(dvoaDT[Team]$Year),by=Team]
+
+teamDT[,Link:=gsub('/(?=[^/]*$).*','/',dvoaDT[Team][1]$Link,perl=T),by=Team]
