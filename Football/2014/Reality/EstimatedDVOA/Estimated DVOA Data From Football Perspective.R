@@ -139,6 +139,15 @@ teamDT$TeamName <- sapply(teamXML,function(x){getTeamName(x)})
 #Load team colors from CSV
 csvin <- data.table(read.csv("team_colors.csv",stringsAsFactors=F))
 csvin$Team <- toupper(csvin$Team)
+sapply(csvin$ColorSolo,function(x){lighten(x)})
+
+lighten <- function(hexin,pct=0.85){
+  rgbin <- strtoi(c(substr(hexin,2,3),substr(hexin,4,5),substr(hexin,6,7)),16L)
+  rgbout <- floor(rgbin + (255 - rgbin) * pct)
+  hexout <- paste0('#',paste0(toupper(as.hexmode(rgbout)),collapse=''))
+  return(hexout)
+}
+csvin$ColorLight <- sapply(csvin$ColorSolo,function(x){lighten(x)})
 
 teamInfo <- merge(teamDT,csvin,all=T)
 
