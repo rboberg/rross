@@ -1,6 +1,6 @@
 ##########
-## This script scrapes and cleans a footballperspective.com html table of historic estimates of DVOA
-## It ends with a data.table dvoaDT, data.frame dvoaDF, and saves a csv estimated_dvoa.csv
+## This script navigates and scrapes the FIFA website for a history of national men's team rankings
+## it creates a data.frame and writes it to file as a csv
 
 
 ###########################
@@ -48,19 +48,21 @@ getRankingTableURL <- function(
                tail)
          ) 
 }
-
+getRankingTableURL(confederation=23913)
 
 #######################################
 ### Get the nodes I want via XPATH query
 #
 start_rank = 238 #may want to replace with scraped number
-end_rank = 57 #57 corresponds to Jan99, when point method was revised
+end_rank = 237 #57 corresponds to Jan99, when point method was revised
 start_page = 1
 max_page_glbl = 4 #to reduce time scraping irrelevant teams
+conf_ids = c(23913,23914,23915,23916,25998,27275)
 
 pointDF <- data.frame()
 
 for(rank in start_rank:end_rank){
+  
   tableURL <- getRankingTableURL(rank=rank,page=start_page)
   tableParse <- htmlParse(tableURL)
   
@@ -100,8 +102,53 @@ for(rank in start_rank:end_rank){
   }
 }
 
-write.csv(pointDF,"fifa_rank_history.csv")
+
+
+
+pointDF <- data.frame()
+for(rank in start_rank:end_rank){
+  for(confi in conf_ids)){
+    tableURL <- getRankingTableURL(rank=rank,confederation=confi)
+    tableParse <- htmlParse(tableURL)
+    
+    #Get date of the table
+    dtString <- xmlValue(getNodeSet(tableParse,"//div[@class='rnkwrap rnkdate']")[[1]][['div']])
+    dt <- as.Date(paste0("1 ",gsub("^\\s*","",dtString)),"%d %B %Y")
+    
+    #Get table data
+    tableList <- getNodeSet(tableParse,"//table[@id='tbl_rankingTable']")
+    tableM <-  t(
+                    sapply(
+                    tableList[[1]][['tbody']]['tr'],
+                    function(x){
+                      tdList <- x['td']
+                      c(
+                        #rank=xmlValue(tdList[[2]]),
+                        name=gsub("^\\s*","",xmlValue(tdList[[3]])),
+                        #abr=gsub("'","",strsplit(xmlGetAttr(x,"onclick"),",")[[1]][2]),
+                        points=gsub("^\\s*","",xmlValue(tdList[[4]]))
+                        )
+                      }
+                    )
+                  )
+    
+    #Turn table matrix in to data.frame
+    pointDF <- rbind(pointDF,data.frame(date=dt,tableM, stringsAsFactors=F))
+  }
+}
+
+
+write.csv(pointDF,"fifa_rank_history.csv",row.names=F)
 
 ########################
+# Some cursory analysis
 ########################
 
+dt <- data.table(transform(read.csv("fifa_rank_history.csv",stringsAsFactors=F),date=as.Date(date)),key=c("name","date"))
+
+top30 <- dt[date==max(date)][rank(-points)<=30]$name
+
+ggplot(dt[top30],aes(x=date,y=points,col=name)) + geom_line()
+ggplot(dt[top30][date==max(date)],aes(x=rank(points),y=points,fill=name)) + geom_bar(stat="identity") + geom_text(aes(x=rank(points),y=points,label=name,angle=90))
+
+rank(dt[top30][date==max(date)]$points)
