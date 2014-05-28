@@ -54,60 +54,59 @@ getRankingTableURL(confederation=23913)
 ### Get the nodes I want via XPATH query
 #
 start_rank = 238 #may want to replace with scraped number
-end_rank = 237 #57 corresponds to Jan99, when point method was revised
-start_page = 1
-max_page_glbl = 4 #to reduce time scraping irrelevant teams
+end_rank = 57 #57 corresponds to Jan99, when point method was revised
 conf_ids = c(23913,23914,23915,23916,25998,27275)
 
+# start_page = 1
+# max_page_glbl = 4 #to reduce time scraping irrelevant teams
+# pointDF <- data.frame()
+# for(rank in start_rank:end_rank){
+#   
+#   tableURL <- getRankingTableURL(rank=rank,page=start_page)
+#   tableParse <- htmlParse(tableURL)
+#   
+#   #Get number of rank table pages
+#   #pg <- sapply(getNodeSet(tableParse,"//div[@class='ctntH_paging']")[[1]]['a'],function(x){xmlValue(x)})
+#   npg <- length(getNodeSet(tableParse,"//div[@class='ctntH_paging']")[[1]]['a'])
+#   
+#   for(pagei in 1:min(c(max_page_glbl,npg))){
+#     if(pagei!=1){
+#       tableURL <- getRankingTableURL(rank=rank,page=pagei)
+#       tableParse <- htmlParse(tableURL)
+#     }
+#     
+#     #Get date of the table
+#     dtString <- xmlValue(getNodeSet(tableParse,"//div[@class='rnkwrap rnkdate']")[[1]][['div']])
+#     dt <- as.Date(paste0("1 ",gsub("^\\s*","",dtString)),"%d %B %Y")
+#     
+#     #Get table data
+#     tableList <- getNodeSet(tableParse,"//table[@id='tbl_rankingTable']")
+#     tableM <-  t(
+#                     sapply(
+#                     tableList[[1]][['tbody']]['tr'],
+#                     function(x){
+#                       tdList <- x['td']
+#                       c(
+#                         #rank=xmlValue(tdList[[2]]),
+#                         name=gsub("^\\s*","",xmlValue(tdList[[3]])),
+#                         #abr=gsub("'","",strsplit(xmlGetAttr(x,"onclick"),",")[[1]][2]),
+#                         points=gsub("^\\s*","",xmlValue(tdList[[4]]))
+#                         )
+#                       }
+#                     )
+#                   )
+#     
+#     #Turn table matrix in to data.frame
+#     pointDF <- rbind(pointDF,data.frame(date=dt,tableM, stringsAsFactors=F))
+#   }
+# }
+
+
+
+
 pointDF <- data.frame()
-
 for(rank in start_rank:end_rank){
-  
-  tableURL <- getRankingTableURL(rank=rank,page=start_page)
-  tableParse <- htmlParse(tableURL)
-  
-  #Get number of rank table pages
-  #pg <- sapply(getNodeSet(tableParse,"//div[@class='ctntH_paging']")[[1]]['a'],function(x){xmlValue(x)})
-  npg <- length(getNodeSet(tableParse,"//div[@class='ctntH_paging']")[[1]]['a'])
-  
-  for(pagei in 1:min(c(max_page_glbl,npg))){
-    if(pagei!=1){
-      tableURL <- getRankingTableURL(rank=rank,page=pagei)
-      tableParse <- htmlParse(tableURL)
-    }
-    
-    #Get date of the table
-    dtString <- xmlValue(getNodeSet(tableParse,"//div[@class='rnkwrap rnkdate']")[[1]][['div']])
-    dt <- as.Date(paste0("1 ",gsub("^\\s*","",dtString)),"%d %B %Y")
-    
-    #Get table data
-    tableList <- getNodeSet(tableParse,"//table[@id='tbl_rankingTable']")
-    tableM <-  t(
-                    sapply(
-                    tableList[[1]][['tbody']]['tr'],
-                    function(x){
-                      tdList <- x['td']
-                      c(
-                        #rank=xmlValue(tdList[[2]]),
-                        name=gsub("^\\s*","",xmlValue(tdList[[3]])),
-                        #abr=gsub("'","",strsplit(xmlGetAttr(x,"onclick"),",")[[1]][2]),
-                        points=gsub("^\\s*","",xmlValue(tdList[[4]]))
-                        )
-                      }
-                    )
-                  )
-    
-    #Turn table matrix in to data.frame
-    pointDF <- rbind(pointDF,data.frame(date=dt,tableM, stringsAsFactors=F))
-  }
-}
-
-
-
-
-pointDF <- data.frame()
-for(rank in start_rank:end_rank){
-  for(confi in conf_ids)){
+  for(confi in conf_ids){
     tableURL <- getRankingTableURL(rank=rank,confederation=confi)
     tableParse <- htmlParse(tableURL)
     
@@ -124,16 +123,16 @@ for(rank in start_rank:end_rank){
                       tdList <- x['td']
                       c(
                         #rank=xmlValue(tdList[[2]]),
-                        name=gsub("^\\s*","",xmlValue(tdList[[3]])),
+                        name=gsub("^\\s*","",xmlValue(tdList[[4]])),
                         #abr=gsub("'","",strsplit(xmlGetAttr(x,"onclick"),",")[[1]][2]),
-                        points=gsub("^\\s*","",xmlValue(tdList[[4]]))
+                        points=gsub("^\\s*","",xmlValue(tdList[[5]]))
                         )
                       }
                     )
                   )
     
     #Turn table matrix in to data.frame
-    pointDF <- rbind(pointDF,data.frame(date=dt,tableM, stringsAsFactors=F))
+    pointDF <- rbind(pointDF,data.frame(date=dt,confid=confi,tableM, stringsAsFactors=F))
   }
 }
 
