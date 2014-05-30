@@ -368,49 +368,49 @@ groupSim <- function(teams,powers,iter=100){
 allThroughProb <- data.frame()
 teams <- c("Brazil","Croatia","Mexico","Cameroon")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="A"))
 
 teams <- c("Spain","Netherlands","Chile","Australia")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="B"))
 
 teams <- c("Colombia","Greece","Cote d`Ivoire","Japan")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="C"))
 
 teams <- c("Uruguay","Costa Rica","England","Italy")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="D"))
 
 teams <- c("Switzerland","Ecuador","France","Honduras")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="E"))
 
 teams <- c("Argentina","Bosnia and Herzegovina","Iran","Nigeria")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="F"))
 
 teams <- c("United States","Germany","Ghana","Portugal")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="G"))
 
 teams <- c("Belgium","Algeria","Russia","Korea Republic")
 powers <- rankdt[J(teams,max(date))]$points
-simResults <- groupSim(teams,powers,iter=1000)
+simResults <- groupSim(teams,powers,iter=5000)
 simResults$throughProb
 allThroughProb <- rbind(allThroughProb,data.frame(prob=simResults$throughProb,group="H"))
 
@@ -419,7 +419,7 @@ allThroughProb$team <- row.names(allThroughProb)
 
 allThroughProb[order(-allThroughProb$prob),]
 
-ggplot(allThroughProb,aes(x=power,y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
+ggplot(allThroughProb,aes(x=log(power),y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 
 ###############
 
