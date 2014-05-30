@@ -109,3 +109,73 @@ rankdt[date > "2006-05-01"]$newPoints <- rankdt[date > "2006-05-01"]$points
 
 wcdf$strength1 <- rankdt[J(wcdf$team1,paste0(wcdf$year,"-05-01"))]$newPoints
 wcdf$strength2 <- rankdt[J(wcdf$team2,paste0(wcdf$year,"-05-01"))]$newPoints
+wcdt <- data.table(wcdf)
+wcdt$res <- ifelse(wcdt$score1 > wcdt$score2, 1, ifelse(wcdt$score1 < wcdt$score2,0,-1))
+
+ptie <- sum(wcdt$score1==wcdt$score2)/nrow(wcdt)
+winbase <- (1 - ptie)/2
+winlm <- lm((res>0)-winbase~0+log(strength1/strength2),wcdt)
+winbeta <- coef(winlm)[1]
+
+tielm <- lm((res==0)-ptie~0+abs(log(strength1/strength2)),wcdt)
+tiebeta <- coef(tielm)[1]
+
+## Point Diff ##
+revwcdt <- wcdt
+revwcdt$score1 <- wcdt$score2
+revwcdt$score2 <- wcdt$score1
+revwcdt$strength1 <- wcdt$strength2
+revwcdt$strength2 <- wcdt$strength1
+
+ggplot(rbind(wcdt,revwcdt),aes(x=log(strength1/strength2),y=(score1-score2))) + geom_point() 
+pdlm <- lm((score1-score2)*sign(strength1-strength2)~0+abs(log(strength1/strength2)),wcdt)
+summary(pdlm)
+
+pdiffFromStrength <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
+  if(useabs){
+    si <- abs(log(data$strength1/data$strength2))
+    s <- abs(log(s1/s2))
+    wi <- 1 - pnorm(abs(si-s)/bandwidth)
+    di <- with(data,(score1-score2)*sign(strength1-strength2))
+    di[di>maxdiff] <- maxdiff
+  } else{
+    si <- log(data$strength1/data$strength2)
+    s <- log(s1/s2)
+    wi <- 1 - pnorm(abs(si-s)/bandwidth)
+    di <- with(data,(score1-score2))
+    di[di>maxdiff] <- maxdiff
+    di[di<(-maxdiff)] <- -maxdiff
+  }
+  
+  ds <- min(di):max(di)
+  rets <- sapply(ds,function(d){sum(wi*(di==d))})/sum(wi)
+  names(rets) <- ds
+  rets
+}
+
+logs <- (-70:70)/100
+probs <- sapply(logs,function(s){pdiffFromStrength(exp(s),1,rbind(wcdt,revwcdt),bandwidth=0.2)})
+
+colnames(probs) <- logs
+
+probdf <- melt(probs,varnames=c("pdiff","logPower"),value.name="prob")
+ggplot(probdf,aes(x=pdiff,y=prob,color=factor(logPower))) + geom_line()
+ggplot(probdf,aes(x=logPower,y=prob,color=factor(pdiff))) + geom_line()
+
+wlprob <- data.table(probdf)[,.SD[,list(
+              pwin=sum(prob*(pdiff>0)),
+              ptie=sum(prob*(pdiff==0)),
+              ploss=sum(prob*(pdiff<0))
+            )],by="logPower"]
+ggplot(melt(wlprob,id.vars="logPower"),aes(x=logPower,y=value,color=variable)) + geom_line()
+
+
+
+###############
+
+
+
+
+###############
+
+
