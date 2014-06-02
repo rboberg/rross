@@ -136,6 +136,8 @@ summary(pdlm)
 totalOnPdiff <- lm(score1~pdiff,transform(rbind(wcdt,revwcdt),pdiff=score1-score2))
 summary(totalOnPdiff)
 
+#Use a kernel function to estimate point differential probabilities
+#
 pdiffFrompower <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
   if(useabs){
     si <- abs(log(data$power1/data$power2))
@@ -158,7 +160,7 @@ pdiffFrompower <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
   rets
 }
 
-logs <- (-70:70)/100
+logs <- (-65:65)/100
 probs <- sapply(logs,function(s){pdiffFrompower(exp(s),1,rbind(wcdt,revwcdt),bandwidth=0.2)})
 
 colnames(probs) <- logs
@@ -166,6 +168,10 @@ colnames(probs) <- logs
 probdf <- melt(probs,varnames=c("pdiff","logPower"),value.name="prob")
 ggplot(probdf,aes(x=pdiff,y=prob,color=factor(logPower))) + geom_line()
 ggplot(probdf,aes(x=logPower,y=prob,color=factor(pdiff))) + geom_line()
+
+ 
+windf <- data.table(probdf)[,outcome:=ifelse(pdiff < 0, "LOSS", ifelse(pdiff>0, "WIN", "TIE"))][,.SD[,list(prob=sum(prob))],by=c('logPower','outcome')]
+ggplot(windf,aes(x=logPower,y=prob,col=factor(outcome))) + geom_line()
 
 logPower = 0.111
 logPower = -0.111
@@ -376,6 +382,8 @@ groupdt[,wcPower:=sum(.SD$power),by="year"]
 groupdt[,pctPower:=power/wcPower]
 
 groupdt[order(-groupdt$pctPower)]
+
+rddt[year==2002]
 
 ###############
 
