@@ -62,7 +62,7 @@ wcUnq <- unique(data.table(
 
 zcalc <- wcUnq[,list(mean=mean(.SD$raw),sd=sd(.SD$raw)),by="year"]
 
-transform(wcdf,strength1=(raw1 - zcalc[year==year]$mean )/zcalc[year==year]$sd)
+transform(wcdf,power1=(raw1 - zcalc[year==year]$mean )/zcalc[year==year]$sd)
 
 # What about plotting change in score the month FIFA switched systems?
 # Switch was from 2006-05-01 to 2006-07-01
@@ -107,44 +107,44 @@ rankdt[date > "2006-05-01"]$newPoints <- rankdt[date > "2006-05-01"]$points
 
 ###############
 
-wcdf$strength1 <- rankdt[J(wcdf$team1,paste0(wcdf$year,"-05-01"))]$newPoints
-wcdf$strength2 <- rankdt[J(wcdf$team2,paste0(wcdf$year,"-05-01"))]$newPoints
+wcdf$power1 <- rankdt[J(wcdf$team1,paste0(wcdf$year,"-05-01"))]$newPoints
+wcdf$power2 <- rankdt[J(wcdf$team2,paste0(wcdf$year,"-05-01"))]$newPoints
 wcdt <- data.table(wcdf)
 wcdt$res <- ifelse(wcdt$score1 > wcdt$score2, 1, ifelse(wcdt$score1 < wcdt$score2,0,-1))
 
 ptie <- sum(wcdt$score1==wcdt$score2)/nrow(wcdt)
 winbase <- (1 - ptie)/2
-winlm <- lm((res>0)-winbase~0+log(strength1/strength2),wcdt)
+winlm <- lm((res>0)-winbase~0+log(power1/power2),wcdt)
 winbeta <- coef(winlm)[1]
 
-tielm <- lm((res==0)-ptie~0+abs(log(strength1/strength2)),wcdt)
+tielm <- lm((res==0)-ptie~0+abs(log(power1/power2)),wcdt)
 tiebeta <- coef(tielm)[1]
 
 ## Point Diff ##
 revwcdt <- wcdt
 revwcdt$score1 <- wcdt$score2
 revwcdt$score2 <- wcdt$score1
-revwcdt$strength1 <- wcdt$strength2
-revwcdt$strength2 <- wcdt$strength1
+revwcdt$power1 <- wcdt$power2
+revwcdt$power2 <- wcdt$power1
 
-ggplot(rbind(wcdt,revwcdt),aes(x=log(strength1/strength2),y=(score1-score2))) + geom_point() 
-pdlm <- lm((score1-score2)*sign(strength1-strength2)~0+abs(log(strength1/strength2)),wcdt)
-pdlm <- lm((score1-score2)~0+log(strength1)+log(strength2),rbind(wcdt,revwcdt))
+ggplot(rbind(wcdt,revwcdt),aes(x=log(power1/power2),y=(score1-score2))) + geom_point() 
+pdlm <- lm((score1-score2)*sign(power1-power2)~0+abs(log(power1/power2)),wcdt)
+pdlm <- lm((score1-score2)~0+log(power1)+log(power2),rbind(wcdt,revwcdt))
 summary(pdlm)
 
 #how many points are usually scored given a given point differential
 totalOnPdiff <- lm(score1~pdiff,transform(rbind(wcdt,revwcdt),pdiff=score1-score2))
 summary(totalOnPdiff)
 
-pdiffFromStrength <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
+pdiffFrompower <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
   if(useabs){
-    si <- abs(log(data$strength1/data$strength2))
+    si <- abs(log(data$power1/data$power2))
     s <- abs(log(s1/s2))
     wi <- 1 - pnorm(abs(si-s)/bandwidth)
-    di <- with(data,(score1-score2)*sign(strength1-strength2))
+    di <- with(data,(score1-score2)*sign(power1-power2))
     di[di>maxdiff] <- maxdiff
   } else{
-    si <- log(data$strength1/data$strength2)
+    si <- log(data$power1/data$power2)
     s <- log(s1/s2)
     wi <- 1 - pnorm(abs(si-s)/bandwidth)
     di <- with(data,(score1-score2))
@@ -159,7 +159,7 @@ pdiffFromStrength <- function(s1,s2,data,bandwidth=0.5,maxdiff=4,useabs=F){
 }
 
 logs <- (-70:70)/100
-probs <- sapply(logs,function(s){pdiffFromStrength(exp(s),1,rbind(wcdt,revwcdt),bandwidth=0.2)})
+probs <- sapply(logs,function(s){pdiffFrompower(exp(s),1,rbind(wcdt,revwcdt),bandwidth=0.2)})
 
 colnames(probs) <- logs
 
@@ -210,68 +210,6 @@ temp <- sampleScore(rep(0.5,10000),probdf)
 usgerm <- sampleScore(rep(log(1015/1340),10000),probdf)
 with(usgerm,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
 apply(usgerm,2,mean)
-
-#US probs vs Portugal
-usptgl <- sampleScore(rep(log(1015/1245),10000),probdf)
-with(usptgl,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
-apply(usptgl,2,mean)
-
-#US probs vs Ghana
-usgna <- sampleScore(rep(log(1015/713),10000),probdf)
-with(usgna,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
-apply(usgna,2,mean)
-
-#Germany probs vs Ghana
-germgna <- sampleScore(rep(log(1340/713),10000),probdf)
-with(germgna,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
-apply(germgna,2,mean)
-
-#Portugal probs vs Ghana
-ptglgna <- sampleScore(rep(log(1245/713),10000),probdf)
-with(ptglgna,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
-apply(ptglgna,2,mean)
-
-#Germany probs vs Portugal
-germptgl <- sampleScore(rep(log(1340/1245),10000),probdf)
-with(germptgl,c(pwin = mean(score1-score2>0), ploss = mean(score1-score2<0), ptie = mean(score1-score2==0)))
-apply(germptgl,2,mean)
-
-pts <- function(scores){
-  pt1 <- (scores[1]>scores[2])*3 + (scores[1]==scores[2])*1
-  pt2 <- (scores[1]<scores[2])*3 + (scores[1]==scores[2])*1
-  return(data.frame(pt1,pt2))
-}
-
-
-reslist <- list()
-reslist$us <- data.frame(pt = pts(usgerm)[1] + pts(usptgl)[1] + pts(usgna)[1], pf = usgerm[1] + usptgl[1] + usgna[1], pa = usgerm[1] + usptgl[1] + usgna[1])
-reslist$gna <- data.frame(pt = pts(germgna)[2] + pts(ptglgna)[2] + pts(usgna)[2], pf = germgna[2] + ptglgna[2] + usgna[2], pa = germgna[1] + ptglgna[1] + usgna[1])
-reslist$germ <- data.frame(pt = pts(germgna)[1] + pts(germptgl)[1] + pts(usgerm)[2], pf = germgna[1] + germptgl[1] + usgerm[2], pa = germgna[2] + germptgl[2] + usgerm[1])
-reslist$ptgl <- data.frame(pt = pts(germptgl)[2] + pts(usptgl)[2] + pts(ptglgna)[1], pf = germptgl[2] + usptgl[2] + ptglgna[1], pa = germptgl[1] + usptgl[1] + ptglgna[2])
-
-resdf <- data.frame()
-for(i in 1:10000){
-  pt <- c(us=reslist$us[i,1], gna=reslist$gna[i,1], germ=reslist$germ[i,1], ptgl=reslist$ptgl[i,1])
-  pf <- c(us=reslist$us[i,2], gna=reslist$gna[i,2], germ=reslist$germ[i,2], ptgl=reslist$ptgl[i,2])
-  pa <- c(us=reslist$us[i,3], gna=reslist$gna[i,3], germ=reslist$germ[i,3], ptgl=reslist$ptgl[i,3])
-  pd <- pf-pa
-  if(sum(rank(pt)>2)<=2){
-    resdf <- rbind(resdf,rank(pt)>2)
-    }else{
-      
-    }
-}
-
-apply(resdf,2,mean)
-
-wlprob <- data.table(probdf)[,.SD[,list(
-              pwin=sum(prob*(pdiff>0)),
-              ptie=sum(prob*(pdiff==0)),
-              ploss=sum(prob*(pdiff<0))
-            )],by="logPower"]
-ggplot(melt(wlprob,id.vars="logPower"),aes(x=logPower,y=value,color=variable)) + geom_line()
-
-
 
 #function that takes team names, powers, and iterations
 #and simulates the group stage among those teams
@@ -421,10 +359,23 @@ allThroughProb[order(-allThroughProb$prob),]
 
 ggplot(allThroughProb,aes(x=log(power),y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 
+thiswc <- with(allThroughProb,data.table(year=2014,rd=as.character(group),team=team,power))
+
 ###############
+#### CHECK "DEATHIEST" GROUPS FROM LAST 3 WC
 
+rddt <- unique(
+  wcdt[,.SD[,list(team=c(team1,team2),power=c(power1,power2))],by=c("year","rd")]
+  )
+rddt <- rbind(rddt,thiswc)
 
+groups <- c('A','B','C','D','E','F','G','H')
+groupdt <- rddt[rd %in% groups,list(power=sum(.SD$power)),by=c("year","rd")]
 
+groupdt[,wcPower:=sum(.SD$power),by="year"]
+groupdt[,pctPower:=power/wcPower]
+
+groupdt[order(-groupdt$pctPower)]
 
 ###############
 
