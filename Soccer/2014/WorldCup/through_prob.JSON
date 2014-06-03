@@ -1,0 +1,194 @@
+[
+ {
+ "prob": 0.7628,
+"group": "A",
+"power": 1210,
+"team": "Brazil" 
+},
+{
+ "prob":   0.21,
+"group": "A",
+"power": 583,
+"team": "Cameroon" 
+},
+{
+ "prob": 0.5144,
+"group": "A",
+"power": 871,
+"team": "Croatia" 
+},
+{
+ "prob": 0.5128,
+"group": "A",
+"power": 877,
+"team": "Mexico" 
+},
+{
+ "prob": 0.1566,
+"group": "B",
+"power": 545,
+"team": "Australia" 
+},
+{
+ "prob": 0.5718,
+"group": "B",
+"power": 1037,
+"team": "Chile" 
+},
+{
+ "prob": 0.4998,
+"group": "B",
+"power": 967,
+"team": "Netherlands" 
+},
+{
+ "prob":  0.772,
+"group": "B",
+"power": 1460,
+"team": "Spain" 
+},
+{
+ "prob": 0.7284,
+"group": "C",
+"power": 1186,
+"team": "Colombia" 
+},
+{
+ "prob":   0.41,
+"group": "C",
+"power": 830,
+"team": "Cote d`Ivoire" 
+},
+{
+ "prob": 0.6732,
+"group": "C",
+"power": 1082,
+"team": "Greece" 
+},
+{
+ "prob": 0.1882,
+"group": "C",
+"power": 613,
+"team": "Japan" 
+},
+{
+ "prob":  0.235,
+"group": "D",
+"power": 748,
+"team": "Costa Rica" 
+},
+{
+ "prob": 0.5176,
+"group": "D",
+"power": 1043,
+"team": "England" 
+},
+{
+ "prob":  0.591,
+"group": "D",
+"power": 1115,
+"team": "Italy" 
+},
+{
+ "prob":  0.657,
+"group": "D",
+"power": 1181,
+"team": "Uruguay" 
+},
+{
+ "prob":   0.38,
+"group": "E",
+"power": 794,
+"team": "Ecuador" 
+},
+{
+ "prob":  0.541,
+"group": "E",
+"power": 935,
+"team": "France" 
+},
+{
+ "prob": 0.3488,
+"group": "E",
+"power": 759,
+"team": "Honduras" 
+},
+{
+ "prob":  0.731,
+"group": "E",
+"power": 1161,
+"team": "Switzerland" 
+},
+{
+ "prob":  0.812,
+"group": "F",
+"power": 1178,
+"team": "Argentina" 
+},
+{
+ "prob": 0.5152,
+"group": "F",
+"power": 795,
+"team": "Bosnia and Herzegovina" 
+},
+{
+ "prob":  0.395,
+"group": "F",
+"power": 715,
+"team": "Iran" 
+},
+{
+ "prob": 0.2778,
+"group": "F",
+"power": 631,
+"team": "Nigeria" 
+},
+{
+ "prob": 0.7044,
+"group": "G",
+"power": 1340,
+"team": "Germany" 
+},
+{
+ "prob": 0.1802,
+"group": "G",
+"power": 713,
+"team": "Ghana" 
+},
+{
+ "prob": 0.6536,
+"group": "G",
+"power": 1245,
+"team": "Portugal" 
+},
+{
+ "prob":  0.462,
+"group": "G",
+"power": 1015,
+"team": "United States" 
+},
+{
+ "prob": 0.4824,
+"group": "H",
+"power": 795,
+"team": "Algeria" 
+},
+{
+ "prob": 0.7226,
+"group": "H",
+"power": 1039,
+"team": "Belgium" 
+},
+{
+ "prob": 0.1826,
+"group": "H",
+"power": 551,
+"team": "Korea Republic" 
+},
+{
+ "prob":  0.612,
+"group": "H",
+"power": 903,
+"team": "Russia" 
+} 
+]

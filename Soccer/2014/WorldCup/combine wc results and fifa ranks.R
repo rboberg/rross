@@ -363,6 +363,7 @@ allThroughProb$team <- row.names(allThroughProb)
 
 allThroughProb[order(-allThroughProb$prob),]
 
+ggplot(allThroughProb,aes(x=power,y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 ggplot(allThroughProb,aes(x=log(power),y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 
 thiswc <- with(allThroughProb,data.table(year=2014,rd=as.character(group),team=team,power))
