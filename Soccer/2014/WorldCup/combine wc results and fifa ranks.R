@@ -19,6 +19,7 @@ tryCatch(library(reshape2), error = function(e) install.packages("reshape2", rep
 tryCatch(library(quantreg), error = function(e) install.packages("ggplot2", repos = "http://cran.r-project.org", library(ggplot2)))
 tryCatch(library(plyr), error = function(e) install.packages("plyr", repos = "http://cran.r-project.org", library(XML)))
 tryCatch(library(data.table), error = function(e) install.packages("data.table", repos = "http://cran.r-project.org", library(data.table)))
+tryCatch(library(RJSONIO), error = function(e) install.packages("RJSONIO", repos = "http://cran.r-project.org", library(data.table)))
 
 ################
 wcdf <- read.csv("clean_wc_results.csv",stringsAsFactors=F)
@@ -366,7 +367,11 @@ allThroughProb[order(-allThroughProb$prob),]
 ggplot(allThroughProb,aes(x=power,y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 ggplot(allThroughProb,aes(x=log(power),y=prob,col=factor(group))) + geom_point() + geom_text(aes(label=team))
 
-thiswc <- with(allThroughProb,data.table(year=2014,rd=as.character(group),team=team,power))
+#####################
+#### make JSON of "through" probabilities for scatterplot
+prob.json <- toJSON(lapply(1:nrow(allThroughProb),function(x){allThroughProb[x,]}))
+writeLines(prob.json,"through_prob.json")
+#####################
 
 ###############
 #### CHECK "DEATHIEST" GROUPS FROM LAST 3 WC
@@ -374,6 +379,7 @@ thiswc <- with(allThroughProb,data.table(year=2014,rd=as.character(group),team=t
 rddt <- unique(
   wcdt[,.SD[,list(team=c(team1,team2),power=c(power1,power2))],by=c("year","rd")]
   )
+thiswc <- with(allThroughProb,data.table(year=2014,rd=as.character(group),team=team,power))
 rddt <- rbind(rddt,thiswc)
 
 groups <- c('A','B','C','D','E','F','G','H')
