@@ -392,6 +392,10 @@ groupdt[order(-groupdt$pctPower)]
 
 rddt[year==2002]
 
+########################
+#### make csv for HTML table
+write.csv(groupdt[order(-groupdt$pctPower),list(year,rd,pct=pctPower)][1:8],'god_top.csv',row.names=F)
+write.csv(groupdt[order(groupdt$pctPower),list(year,rd,pct=pctPower)][1:8],'god_bottom.csv',row.names=F)
 ###############
 
 
