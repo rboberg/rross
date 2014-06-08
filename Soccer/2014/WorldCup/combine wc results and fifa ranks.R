@@ -5,21 +5,22 @@
 
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
-HOMEDIR <- "F:/Docs/Personal/rross"
+#HOMEDIR <- "F:/Docs/Personal/rross"
 #HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+HOMEDIR <- "C:/Users/Ross/Documents/GitHub/rross"
 setwd(paste0(HOMEDIR,"/Soccer/2014/WorldCup/"))
 
 
 ###############
 #### LOAD AND/OR INSTALL LIBRARIES
 
-tryCatch(library(XML), error = function(e) install.packages("XML", repos = "http://cran.r-project.org", library(XML)))
-tryCatch(library(ggplot2), error = function(e) install.packages("ggplot2", repos = "http://cran.r-project.org", library(ggplot2)))
-tryCatch(library(reshape2), error = function(e) install.packages("reshape2", repos = "http://cran.r-project.org", library(reshape2)))
-tryCatch(library(quantreg), error = function(e) install.packages("ggplot2", repos = "http://cran.r-project.org", library(ggplot2)))
-tryCatch(library(plyr), error = function(e) install.packages("plyr", repos = "http://cran.r-project.org", library(XML)))
-tryCatch(library(data.table), error = function(e) install.packages("data.table", repos = "http://cran.r-project.org", library(data.table)))
-tryCatch(library(RJSONIO), error = function(e) install.packages("RJSONIO", repos = "http://cran.r-project.org", library(data.table)))
+tryCatch(library(XML), error = function(e) install.packages("XML", repos = "http://cran.r-project.org"))
+tryCatch(library(ggplot2), error = function(e) install.packages("ggplot2", repos = "http://cran.r-project.org"))
+tryCatch(library(reshape2), error = function(e) install.packages("reshape2", repos = "http://cran.r-project.org"))
+tryCatch(library(quantreg), error = function(e) install.packages("quantreg", repos = "http://cran.r-project.org"))
+tryCatch(library(plyr), error = function(e) install.packages("plyr", repos = "http://cran.r-project.org"))
+tryCatch(library(data.table), error = function(e) install.packages("data.table", repos = "http://cran.r-project.org"))
+
 
 ################
 wcdf <- read.csv("clean_wc_results.csv",stringsAsFactors=F)
@@ -46,8 +47,8 @@ rankdt <- unique(data.table(rankdf,key=c('name','date')))
 
 wcdf$raw1 <- rankdt[J(wcdf$team1,paste0(wcdf$year,"-05-01"))]$points
 wcdf$raw2 <- rankdt[J(wcdf$team2,paste0(wcdf$year,"-05-01"))]$points
-wcdf$conf1 <- setkey(unique(rankdt[,list(name,confid)],name))[wcdf$team1]$confid
-wcdf$conf2 <-  setkey(unique(rankdt[,list(name,confid)],name))[wcdf$team2]$confid
+wcdf$conf1 <- setkey(unique(rankdt[,list(name,confid)]),name)[wcdf$team1]$confid
+wcdf$conf2 <-  setkey(unique(rankdt[,list(name,confid)]),name)[wcdf$team2]$confid
 
 ###############
 # needed to normalize across changes in point systems over time
@@ -394,10 +395,31 @@ groupdt[order(-groupdt$pctPower)]
 
 rddt[year==2002]
 
+##################
+## Get teams in each group and year
+grpteams <- data.frame()
+for(i in 1:nrow(groupdt)){
+  yi = groupdt$year[i]
+  grpi = groupdt$rd[i]
+  infoi <- unique(rddt[year==yi & rd==grpi])
+  #get teams, sorted by descending power
+  tmsi <- infoi$team[order(-infoi$power)]
+  if(yi < 2014){
+    r16i <- tmsi %in% unique(unlist(c(wcdt[year==yi & rd=='R16',list(team1,team2)])))
+    tmsi <- paste0(tmsi,ifelse(r16i,"*",""))
+  }
+  names(tmsi) <- c('team1','team2','team3','team4')
+  grpteams <- rbind(grpteams,data.frame(year=yi,rd=grpi,t(tmsi),stringsAsFactors=F))
+}
+
+groupDetail <- merge(groupdt,grpteams,by=c('year','rd'))
+
+unique(rddt[year==yi & rd==grpi])
+
 ########################
 #### make csv for HTML table
-write.csv(groupdt[order(-groupdt$pctPower),list(year,rd,pct=pctPower)][1:8],'god_top.csv',row.names=F)
-write.csv(groupdt[order(groupdt$pctPower),list(year,rd,pct=pctPower)][1:8],'god_bottom.csv',row.names=F)
+write.csv(groupDetail[order(-groupDetail$pctPower),list(year,rd,pct=pctPower,team1,team2,team3,team4)][1:8],'god_top.csv',row.names=F)
+write.csv(groupDetail[order(groupDetail$pctPower),list(year,rd,pct=pctPower,team1,team2,team3,team4)][1:8],'god_bottom.csv',row.names=F)
 ###############
 
 
