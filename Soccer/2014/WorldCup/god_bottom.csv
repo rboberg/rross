@@ -1,9 +1,9 @@
-"year","rd","pct"
-2002,"H",0.107595441141309
-2014,"H",0.109904067921249
-2010,"F",0.109966227858571
-2014,"F",0.110940268075008
-2006,"G",0.111230686447844
-2010,"A",0.111310221241988
-2002,"D",0.111899258786961
-2006,"D",0.116650011530479
+"year","rd","pct","team1","team2","team3","team4"
+2002,"H",0.107595441141309,"Belgium*","Russia","Tunisia","Japan*"
+2014,"H",0.109904067921249,"Belgium","Russia","Algeria","Korea Republic"
+2010,"F",0.109966227858571,"Italy","Paraguay*","Slovakia*","New Zealand"
+2014,"F",0.110940268075008,"Argentina","Bosnia and Herzegovina","Iran","Nigeria"
+2006,"G",0.111230686447844,"France*","Switzerland*","Korea Republic","Togo"
+2010,"A",0.111310221241988,"France","Uruguay*","Mexico*","South Africa"
+2002,"D",0.111899258786961,"Portugal","United States*","Poland","Korea Republic*"
+2006,"D",0.116650011530479,"Portugal*","Mexico*","Iran","Angola"
