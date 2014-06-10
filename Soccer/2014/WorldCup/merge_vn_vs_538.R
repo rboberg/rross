@@ -30,6 +30,7 @@ combodf <- merge(vndf,nsdf,by.x=c('team','group'),by.y=c('TEAM','GROUP'))
 
 #rename
 combodf <- rename(combodf,c(prob='prob_vn',SIXTEEN='prob_538'))
+combodf$prob_diff <- combodf$prob_538 - combodf$prob_vn
 
 #write to file
 combo.json <- toJSON(lapply(1:nrow(combodf),function(x){combodf[x,]}))
