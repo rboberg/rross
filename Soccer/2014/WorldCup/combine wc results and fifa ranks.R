@@ -374,6 +374,7 @@ ggplot(allThroughProb,aes(x=log(power),y=prob,col=factor(group))) + geom_point()
 #### make JSON of "through" probabilities for scatterplot
 prob.json <- toJSON(lapply(1:nrow(allThroughProb),function(x){allThroughProb[x,]}))
 writeLines(prob.json,"through_prob.json")
+write.csv(allThroughProb,'20140610_through_prob.csv')
 #####################
 
 ###############
