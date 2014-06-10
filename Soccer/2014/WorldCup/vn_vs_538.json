@@ -1,0 +1,258 @@
+[
+ {
+ "team": "Algeria",
+"group": "H",
+"prob_vn": 0.4652,
+"power": 795,
+"SPI":   63.4,
+"prob_538":   0.19 
+},
+{
+ "team": "Argentina",
+"group": "F",
+"prob_vn": 0.8079,
+"power": 1178,
+"SPI":     90,
+"prob_538":   0.93 
+},
+{
+ "team": "Australia",
+"group": "B",
+"prob_vn":  0.143,
+"power": 545,
+"SPI":   69.4,
+"prob_538":   0.07 
+},
+{
+ "team": "Belgium",
+"group": "H",
+"prob_vn": 0.7161,
+"power": 1039,
+"SPI":     82,
+"prob_538":   0.77 
+},
+{
+ "team": "Bosnia and Herzegovina",
+"group": "F",
+"prob_vn": 0.5166,
+"power": 795,
+"SPI":   80.3,
+"prob_538":   0.56 
+},
+{
+ "team": "Brazil",
+"group": "A",
+"prob_vn": 0.7657,
+"power": 1210,
+"SPI":   91.8,
+"prob_538":   0.99 
+},
+{
+ "team": "Cameroon",
+"group": "A",
+"prob_vn": 0.2053,
+"power": 583,
+"SPI":   71.3,
+"prob_538":   0.23 
+},
+{
+ "team": "Chile",
+"group": "B",
+"prob_vn": 0.5708,
+"power": 1037,
+"SPI":   86.7,
+"prob_538":    0.7 
+},
+{
+ "team": "Colombia",
+"group": "C",
+"prob_vn": 0.7332,
+"power": 1186,
+"SPI":   85.8,
+"prob_538":   0.79 
+},
+{
+ "team": "Costa Rica",
+"group": "D",
+"prob_vn": 0.2437,
+"power": 748,
+"SPI":   74.2,
+"prob_538":    0.3 
+},
+{
+ "team": "Cote d`Ivoire",
+"group": "C",
+"prob_vn": 0.4122,
+"power": 830,
+"SPI":   78.9,
+"prob_538":   0.53 
+},
+{
+ "team": "Croatia",
+"group": "A",
+"prob_vn": 0.5121,
+"power": 871,
+"SPI":   75.7,
+"prob_538":   0.37 
+},
+{
+ "team": "Ecuador",
+"group": "E",
+"prob_vn": 0.3877,
+"power": 794,
+"SPI":   80.6,
+"prob_538":   0.56 
+},
+{
+ "team": "England",
+"group": "D",
+"prob_vn": 0.5223,
+"power": 1043,
+"SPI":   83.2,
+"prob_538":   0.62 
+},
+{
+ "team": "France",
+"group": "E",
+"prob_vn": 0.5465,
+"power": 935,
+"SPI":   86.1,
+"prob_538":    0.8 
+},
+{
+ "team": "Germany",
+"group": "G",
+"prob_vn": 0.7027,
+"power": 1340,
+"SPI":   88.9,
+"prob_538":   0.89 
+},
+{
+ "team": "Ghana",
+"group": "G",
+"prob_vn": 0.1849,
+"power": 713,
+"SPI":   76.4,
+"prob_538":    0.3 
+},
+{
+ "team": "Greece",
+"group": "C",
+"prob_vn": 0.6634,
+"power": 1082,
+"SPI":   76.7,
+"prob_538":   0.38 
+},
+{
+ "team": "Honduras",
+"group": "E",
+"prob_vn": 0.3431,
+"power": 759,
+"SPI":   69.6,
+"prob_538":    0.2 
+},
+{
+ "team": "Iran",
+"group": "F",
+"prob_vn":  0.384,
+"power": 715,
+"SPI":   70.7,
+"prob_538":   0.19 
+},
+{
+ "team": "Italy",
+"group": "D",
+"prob_vn": 0.5892,
+"power": 1115,
+"SPI":   79.5,
+"prob_538":   0.45 
+},
+{
+ "team": "Japan",
+"group": "C",
+"prob_vn": 0.1915,
+"power": 613,
+"SPI":   73.5,
+"prob_538":    0.3 
+},
+{
+ "team": "Korea Republic",
+"group": "H",
+"prob_vn": 0.1953,
+"power": 551,
+"SPI":   73.6,
+"prob_538":   0.42 
+},
+{
+ "team": "Mexico",
+"group": "A",
+"prob_vn": 0.5172,
+"power": 877,
+"SPI":   76.9,
+"prob_538":    0.4 
+},
+{
+ "team": "Netherlands",
+"group": "B",
+"prob_vn": 0.5057,
+"power": 967,
+"SPI":   82.5,
+"prob_538":   0.43 
+},
+{
+ "team": "Nigeria",
+"group": "F",
+"prob_vn": 0.2919,
+"power": 631,
+"SPI":   75.2,
+"prob_538":   0.32 
+},
+{
+ "team": "Portugal",
+"group": "G",
+"prob_vn": 0.6678,
+"power": 1245,
+"SPI":   79.8,
+"prob_538":   0.45 
+},
+{
+ "team": "Russia",
+"group": "H",
+"prob_vn": 0.6236,
+"power": 903,
+"SPI":     79,
+"prob_538":   0.62 
+},
+{
+ "team": "Spain",
+"group": "B",
+"prob_vn": 0.7805,
+"power": 1460,
+"SPI":   89.1,
+"prob_538":    0.8 
+},
+{
+ "team": "Switzerland",
+"group": "E",
+"prob_vn": 0.7229,
+"power": 1161,
+"SPI":     78,
+"prob_538":   0.45 
+},
+{
+ "team": "United States",
+"group": "G",
+"prob_vn": 0.4447,
+"power": 1015,
+"SPI":   77.4,
+"prob_538":   0.36 
+},
+{
+ "team": "Uruguay",
+"group": "D",
+"prob_vn":  0.645,
+"power": 1181,
+"SPI":   83.3,
+"prob_538":   0.65 
+} 
+]
