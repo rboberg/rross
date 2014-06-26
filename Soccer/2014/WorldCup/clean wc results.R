@@ -55,3 +55,14 @@ wcdf <- cbind(rawwc,
               )
 
 write.csv(wcdf,"clean_wc_results.csv",row.names=F)
+
+
+
+resdf <- data.frame(
+  s1 = ifelse(wcdf$score1>=wcdf$score2,wcdf$score1,wcdf$score2),
+  s2 = ifelse(wcdf$score1>=wcdf$score2,wcdf$score2,wcdf$score1)
+  )
+resdf$tie <- resdf$s1==resdf$s2
+
+resfreq <- table(with(resdf[!resdf$tie,],paste(s1,s2)))
+resfreq/sum(resfreq)

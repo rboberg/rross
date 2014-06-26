@@ -1,0 +1,33 @@
+team,group,prob_vn,prob_538
+Brazil,A,0.7657,0.99
+Cameroon,A,0.2053,0.23
+Croatia,A,0.5121,0.37
+Mexico,A,0.5172,0.4
+Australia,B,0.143,0.07
+Chile,B,0.5708,0.7
+Netherlands,B,0.5057,0.43
+Spain,B,0.7805,0.8
+Colombia,C,0.7332,0.79
+Cote d`Ivoire,C,0.4122,0.53
+Greece,C,0.6634,0.38
+Japan,C,0.1915,0.3
+Costa Rica,D,0.2437,0.3
+England,D,0.5223,0.62
+Italy,D,0.5892,0.45
+Uruguay,D,0.645,0.65
+Ecuador,E,0.3877,0.56
+France,E,0.5465,0.8
+Honduras,E,0.3431,0.2
+Switzerland,E,0.7229,0.45
+Argentina,F,0.8079,0.93
+Bosnia and Herzegovina,F,0.5166,0.56
+Iran,F,0.384,0.19
+Nigeria,F,0.2919,0.32
+Germany,G,0.7027,0.89
+Ghana,G,0.1849,0.3
+Portugal,G,0.6678,0.45
+United States,G,0.4447,0.36
+Algeria,H,0.4652,0.19
+Belgium,H,0.7161,0.77
+Korea Republic,H,0.1953,0.42
+Russia,H,0.6236,0.62

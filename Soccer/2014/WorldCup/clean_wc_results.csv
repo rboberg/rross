@@ -1,193 +1,193 @@
-year,rd,result,team1,team2,score1,score2,pk1,pk2,et
-2010,A,"South Africa  -  Mexico  1-1    (June 11, Soccer City Stadium) ",South Africa,Mexico,1,1,FALSE,FALSE,FALSE
-2010,A,"Uruguay  -  France  0-0    (June 11, Green Point Stadium) ",Uruguay,France,0,0,FALSE,FALSE,FALSE
-2010,A,"South Africa  -  Uruguay  0-3    (June 16, Loftus Versfeld Stadium) ",South Africa,Uruguay,0,3,FALSE,FALSE,FALSE
-2010,A,"France  -  Mexico  0-2    (June 17, Peter Mokaba Stadium) ",France,Mexico,0,2,FALSE,FALSE,FALSE
-2010,A,"Mexico  -  Uruguay  0-1    (June 22, Royal Bafokeng Stadium) ",Mexico,Uruguay,0,1,FALSE,FALSE,FALSE
-2010,A,"France  -  South Africa  1-2    (June 22, Free State Stadium) ",France,South Africa,1,2,FALSE,FALSE,FALSE
-2010,B,"Argentina  -  Nigeria  1-0    (June 12, Ellis Park Stadium) ",Argentina,Nigeria,1,0,FALSE,FALSE,FALSE
-2010,B,"Korea Republic  -  Greece  2-0    (June 12, Nelson Mandela Bay) ",Korea Republic,Greece,2,0,FALSE,FALSE,FALSE
-2010,B,"Greece  -  Nigeria  2-1    (June 17, Free State Stadium) ",Greece,Nigeria,2,1,FALSE,FALSE,FALSE
-2010,B,"Argentina  -  Korea Republic  4-1    (June 17, Soccer City Stadium) ",Argentina,Korea Republic,4,1,FALSE,FALSE,FALSE
-2010,B,"Nigeria  -  Korea Republic  2-2    (June 22, Moses Mabhida Stadium) ",Nigeria,Korea Republic,2,2,FALSE,FALSE,FALSE
-2010,B,"Greece  -  Argentina  0-2    (June 22, Peter Mokaba Stadium) ",Greece,Argentina,0,2,FALSE,FALSE,FALSE
-2010,C,"England  -  United States  1-1    (June 12, Royal Bafokeng Stadium) ",England,United States,1,1,FALSE,FALSE,FALSE
-2010,C,"Algeria  -  Slovenia  0-1    (June 13, Peter Mokaba Stadium) ",Algeria,Slovenia,0,1,FALSE,FALSE,FALSE
-2010,C,"Slovenia  -  United States  2-2    (June 18, Ellis Park Stadium) ",Slovenia,United States,2,2,FALSE,FALSE,FALSE
-2010,C,"England  -  Algeria  0-0    (June 18, Green Point Stadium) ",England,Algeria,0,0,FALSE,FALSE,FALSE
-2010,C,"Slovenia  -  England  0-1    (June 23, Nelson Mandela Bay) ",Slovenia,England,0,1,FALSE,FALSE,FALSE
-2010,C,"United States  -  Algeria  1-0    (June 23, Loftus Versfeld Stadium) ",United States,Algeria,1,0,FALSE,FALSE,FALSE
-2010,D,"Germany  -  Australia  4-0    (June 13, Moses Mabhida Stadium) ",Germany,Australia,4,0,FALSE,FALSE,FALSE
-2010,D,"Serbia  -  Ghana  0-1    (June 13, Loftus Versfeld Stadium) ",Serbia,Ghana,0,1,FALSE,FALSE,FALSE
-2010,D,"Germany  -  Serbia  0-1    (June 18, Nelson Mandela Bay) ",Germany,Serbia,0,1,FALSE,FALSE,FALSE
-2010,D,"Ghana  -  Australia  1-1    (June 19, Royal Bafokeng Stadium) ",Ghana,Australia,1,1,FALSE,FALSE,FALSE
-2010,D,"Ghana  -  Germany  0-1    (June 23, Soccer City Stadium) ",Ghana,Germany,0,1,FALSE,FALSE,FALSE
-2010,D,"Australia  -  Serbia  2-1    (June 23, Mbombela Stadium) ",Australia,Serbia,2,1,FALSE,FALSE,FALSE
-2010,E,"Netherlands  -  Denmark  2-0    (June 14, Soccer City Stadium) ",Netherlands,Denmark,2,0,FALSE,FALSE,FALSE
-2010,E,"Japan  -  Cameroon  1-0    (June 14, Free State Stadium) ",Japan,Cameroon,1,0,FALSE,FALSE,FALSE
-2010,E,"Netherlands  -  Japan  1-0    (June 19, Moses Mabhida Stadium) ",Netherlands,Japan,1,0,FALSE,FALSE,FALSE
-2010,E,"Cameroon  -  Denmark  1-2    (June 19, Loftus Versfeld Stadium) ",Cameroon,Denmark,1,2,FALSE,FALSE,FALSE
-2010,E,"Denmark  -  Japan  1-3    (June 24, Royal Bafokeng Stadium) ",Denmark,Japan,1,3,FALSE,FALSE,FALSE
-2010,E,"Cameroon  -  Netherlands  1-2    (June 24, Green Point Stadium) ",Cameroon,Netherlands,1,2,FALSE,FALSE,FALSE
-2010,F,"Italy  -  Paraguay  1-1    (June 14, Green Point Stadium) ",Italy,Paraguay,1,1,FALSE,FALSE,FALSE
-2010,F,"New Zealand  -  Slovakia  1-1    (June 15, Royal Bafokeng Stadium) ",New Zealand,Slovakia,1,1,FALSE,FALSE,FALSE
-2010,F,"Slovakia  -  Paraguay  0-2    (June 20, Free State Stadium) ",Slovakia,Paraguay,0,2,FALSE,FALSE,FALSE
-2010,F,"Italy  -  New Zealand  1-1    (June 20, Mbombela Stadium) ",Italy,New Zealand,1,1,FALSE,FALSE,FALSE
-2010,F,"Slovakia  -  Italy  3-2    (June 24, Ellis Park Stadium) ",Slovakia,Italy,3,2,FALSE,FALSE,FALSE
-2010,F,"Paraguay  -  New Zealand  0-0    (June 24, Peter Mokaba Stadium) ",Paraguay,New Zealand,0,0,FALSE,FALSE,FALSE
-2010,G,"Cote d`Ivoire  -  Portugal  0-0    (June 15, Nelson Mandela Bay) ",Cote d`Ivoire,Portugal,0,0,FALSE,FALSE,FALSE
-2010,G,"Brazil  -  Korea DPR  2-1    (June 15, Ellis Park Stadium) ",Brazil,Korea DPR,2,1,FALSE,FALSE,FALSE
-2010,G,"Brazil  -  Cote d`Ivoire  3-1    (June 20, Soccer City Stadium) ",Brazil,Cote d`Ivoire,3,1,FALSE,FALSE,FALSE
-2010,G,"Portugal  -  Korea DPR  7-0    (June 21, Green Point Stadium) ",Portugal,Korea DPR,7,0,FALSE,FALSE,FALSE
-2010,G,"Portugal  -  Brazil  0-0    (June 25, Moses Mabhida Stadium) ",Portugal,Brazil,0,0,FALSE,FALSE,FALSE
-2010,G,"Korea DPR  -  Cote d`Ivoire  0-3    (June 25, Mbombela Stadium) ",Korea DPR,Cote d`Ivoire,0,3,FALSE,FALSE,FALSE
-2010,H,"Honduras  -  Chile  0-1    (June 16, Mbombela Stadium) ",Honduras,Chile,0,1,FALSE,FALSE,FALSE
-2010,H,"Spain  -  Switzerland  0-1    (June 16, Moses Mabhida Stadium) ",Spain,Switzerland,0,1,FALSE,FALSE,FALSE
-2010,H,"Chile  -  Switzerland  1-0    (June 21, Nelson Mandela Bay) ",Chile,Switzerland,1,0,FALSE,FALSE,FALSE
-2010,H,"Spain  -  Honduras  2-0    (June 21, Ellis Park Stadium) ",Spain,Honduras,2,0,FALSE,FALSE,FALSE
-2010,H,"Chile  -  Spain  1-2    (June 25, Loftus Versfeld Stadium) ",Chile,Spain,1,2,FALSE,FALSE,FALSE
-2010,H,"Switzerland  -  Honduras  0-0    (June 25, Free State Stadium) ",Switzerland,Honduras,0,0,FALSE,FALSE,FALSE
-2010,R16,"Uruguay  -  Korea Republic  2-1    (June 26, Nelson Mandela Bay) ",Uruguay,Korea Republic,2,1,FALSE,FALSE,FALSE
-2010,R16,"United States  -  Ghana  1-2 A.E.T    (June 26, Royal Bafokeng Stadium) ",United States,Ghana,1,2,FALSE,FALSE,TRUE
-2010,R16,"Germany  -  England  4-1    (June 27, Free State Stadium) ",Germany,England,4,1,FALSE,FALSE,FALSE
-2010,R16,"Argentina  -  Mexico  3-1    (June 27, Soccer City Stadium) ",Argentina,Mexico,3,1,FALSE,FALSE,FALSE
-2010,R16,"Netherlands  -  Slovakia  2-1    (June 28, Moses Mabhida Stadium) ",Netherlands,Slovakia,2,1,FALSE,FALSE,FALSE
-2010,R16,"Brazil  -  Chile  3-0    (June 28, Ellis Park Stadium) ",Brazil,Chile,3,0,FALSE,FALSE,FALSE
-2010,R16,"Paraguay*  -  Japan  0-0 A.E.T    (June 29, Loftus Versfeld Stadium) ",Paraguay,Japan,0,0,TRUE,FALSE,TRUE
-2010,R16,"Spain  -  Portugal  1-0    (June 29, Green Point Stadium) ",Spain,Portugal,1,0,FALSE,FALSE,FALSE
-2010,QF,"Uruguay*  -  Ghana  1-1 A.E.T    (July 2, Soccer City Stadium) ",Uruguay,Ghana,1,1,TRUE,FALSE,TRUE
-2010,QF,"Netherlands  -  Brazil  2-1    (July 2, Nelson Mandela Bay) ",Netherlands,Brazil,2,1,FALSE,FALSE,FALSE
-2010,QF,"Paraguay  -  Spain  0-1    (July 3, Ellis Park Stadium) ",Paraguay,Spain,0,1,FALSE,FALSE,FALSE
-2010,QF,"Argentina  -  Germany  0-4    (July 3, Green Point Stadium) ",Argentina,Germany,0,4,FALSE,FALSE,FALSE
-2010,SF,"Uruguay  -  Netherlands  2-3    (July 6, Green Point Stadium) ",Uruguay,Netherlands,2,3,FALSE,FALSE,FALSE
-2010,SF,"Germany  -  Spain  0-1    (July 7, Moses Mabhida Stadium) ",Germany,Spain,0,1,FALSE,FALSE,FALSE
-2010,CG,"Uruguay  -  Germany  2-3    (July 10, Nelson Mandela Bay) ",Uruguay,Germany,2,3,FALSE,FALSE,FALSE
-2010,WCF,"Netherlands  -  Spain  0-1 A.E.T    (July 11, Soccer City Stadium) ",Netherlands,Spain,0,1,FALSE,FALSE,TRUE
-2006,A,"Poland  -  Ecuador  0-2    (June 9, Arena Auf Schalke) ",Poland,Ecuador,0,2,FALSE,FALSE,FALSE
-2006,A,"Germany  -  Costa Rica  4-2    (June 9, Allianz Arena) ",Germany,Costa Rica,4,2,FALSE,FALSE,FALSE
-2006,A,"Germany  -  Poland  1-0    (June 14, Westfalenstadion) ",Germany,Poland,1,0,FALSE,FALSE,FALSE
-2006,A,"Ecuador  -  Costa Rica  3-0    (June 15, AOL Arena) ",Ecuador,Costa Rica,3,0,FALSE,FALSE,FALSE
-2006,A,"Ecuador  -  Germany  0-3    (June 20, Olympiastadion) ",Ecuador,Germany,0,3,FALSE,FALSE,FALSE
-2006,A,"Costa Rica  -  Poland  1-2    (June 20, AWD Arena) ",Costa Rica,Poland,1,2,FALSE,FALSE,FALSE
-2006,B,"England  -  Paraguay  1-0    (June 10, Waldstadion) ",England,Paraguay,1,0,FALSE,FALSE,FALSE
-2006,B,"Trinidad And Tobago  -  Sweden  0-0    (June 10, Westfalenstadion) ",Trinidad And Tobago,Sweden,0,0,FALSE,FALSE,FALSE
-2006,B,"England  -  Trinidad And Tobago  2-0    (June 15, Frankenstadion) ",England,Trinidad And Tobago,2,0,FALSE,FALSE,FALSE
-2006,B,"Sweden  -  Paraguay  1-0    (June 15, Olympiastadion) ",Sweden,Paraguay,1,0,FALSE,FALSE,FALSE
-2006,B,"Sweden  -  England  2-2    (June 20, RheinEnergie Stadion) ",Sweden,England,2,2,FALSE,FALSE,FALSE
-2006,B,"Paraguay  -  Trinidad And Tobago  2-0    (June 20, Fritz Walter Stadion) ",Paraguay,Trinidad And Tobago,2,0,FALSE,FALSE,FALSE
-2006,C,"Argentina  -  Cote d`Ivoire  2-1    (June 10, HSH Nordbank Arena) ",Argentina,Cote d`Ivoire,2,1,FALSE,FALSE,FALSE
-2006,C,"Serbia and Montenegro  -  Netherlands  0-1    (June 11, Zentralstadion) ",Serbia and Montenegro,Netherlands,0,1,FALSE,FALSE,FALSE
-2006,C,"Argentina  -  Serbia and Montenegro  6-0    (June 16, Arena Auf Schalke) ",Argentina,Serbia and Montenegro,6,0,FALSE,FALSE,FALSE
-2006,C,"Netherlands  -  Cote d`Ivoire  2-1    (June 16, Gottlieb-Daimler-Stadion) ",Netherlands,Cote d`Ivoire,2,1,FALSE,FALSE,FALSE
-2006,C,"Netherlands  -  Argentina  0-0    (June 21, Waldstadion) ",Netherlands,Argentina,0,0,FALSE,FALSE,FALSE
-2006,C,"Cote d`Ivoire  -  Serbia and Montenegro  3-2    (June 21, Allianz Arena) ",Cote d`Ivoire,Serbia and Montenegro,3,2,FALSE,FALSE,FALSE
-2006,D,"Mexico  -  Iran  3-1    (June 11, Frankenstadion) ",Mexico,Iran,3,1,FALSE,FALSE,FALSE
-2006,D,"Angola  -  Portugal  0-1    (June 11, RheinEnergie Stadion) ",Angola,Portugal,0,1,FALSE,FALSE,FALSE
-2006,D,"Mexico  -  Angola  0-0    (June 16, AWD Arena) ",Mexico,Angola,0,0,FALSE,FALSE,FALSE
-2006,D,"Portugal  -  Iran  2-0    (June 17, Waldstadion) ",Portugal,Iran,2,0,FALSE,FALSE,FALSE
-2006,D,"Portugal  -  Mexico  2-1    (June 21, Arena Auf Schalke) ",Portugal,Mexico,2,1,FALSE,FALSE,FALSE
-2006,D,"Iran  -  Angola  1-1    (June 21, Zentralstadion) ",Iran,Angola,1,1,FALSE,FALSE,FALSE
-2006,E,"Italy  -  Ghana  2-0    (June 12, AWD Arena) ",Italy,Ghana,2,0,FALSE,FALSE,FALSE
-2006,E,"United States  -  Czech Republic  0-3    (June 12, Arena Auf Schalke) ",United States,Czech Republic,0,3,FALSE,FALSE,FALSE
-2006,E,"Italy  -  United States  1-1    (June 17, Fritz Walter Stadion) ",Italy,United States,1,1,FALSE,FALSE,FALSE
-2006,E,"Czech Republic  -  Ghana  0-2    (June 17, RheinEnergie Stadion) ",Czech Republic,Ghana,0,2,FALSE,FALSE,FALSE
-2006,E,"Ghana  -  United States  2-1    (June 22, Frankenstadion) ",Ghana,United States,2,1,FALSE,FALSE,FALSE
-2006,E,"Czech Republic  -  Italy  0-2    (June 22, HSH Nordbank Arena) ",Czech Republic,Italy,0,2,FALSE,FALSE,FALSE
-2006,F,"Australia  -  Japan  3-1    (June 12, Fritz Walter Stadion) ",Australia,Japan,3,1,FALSE,FALSE,FALSE
-2006,F,"Brazil  -  Croatia  1-0    (June 13, Olympiastadion) ",Brazil,Croatia,1,0,FALSE,FALSE,FALSE
-2006,F,"Brazil  -  Australia  2-0    (June 18, Allianz Arena) ",Brazil,Australia,2,0,FALSE,FALSE,FALSE
-2006,F,"Japan  -  Croatia  0-0    (June 18, Frankenstadion) ",Japan,Croatia,0,0,FALSE,FALSE,FALSE
-2006,F,"Japan  -  Brazil  1-4    (June 22, Westfalenstadion) ",Japan,Brazil,1,4,FALSE,FALSE,FALSE
-2006,F,"Croatia  -  Australia  2-2    (June 22, Gottlieb-Daimler-Stadion) ",Croatia,Australia,2,2,FALSE,FALSE,FALSE
-2006,G,"France  -  Switzerland  0-0    (June 13, Gottlieb-Daimler-Stadion) ",France,Switzerland,0,0,FALSE,FALSE,FALSE
-2006,G,"Korea Republic  -  Togo  2-1    (June 13, Waldstadion) ",Korea Republic,Togo,2,1,FALSE,FALSE,FALSE
-2006,G,"France  -  Korea Republic  1-1    (June 18, Zentralstadion) ",France,Korea Republic,1,1,FALSE,FALSE,FALSE
-2006,G,"Togo  -  Switzerland  0-2    (June 19, Westfalenstadion) ",Togo,Switzerland,0,2,FALSE,FALSE,FALSE
-2006,G,"Togo  -  France  0-2    (June 23, RheinEnergie Stadion) ",Togo,France,0,2,FALSE,FALSE,FALSE
-2006,G,"Switzerland  -  Korea Republic  2-0    (June 23, AWD Arena) ",Switzerland,Korea Republic,2,0,FALSE,FALSE,FALSE
-2006,H,"Tunisia  -  Saudi Arabia  2-2    (June 14, Allianz Arena) ",Tunisia,Saudi Arabia,2,2,FALSE,FALSE,FALSE
-2006,H,"Spain  -  Ukraine  4-0    (June 14, Zentralstadion) ",Spain,Ukraine,4,0,FALSE,FALSE,FALSE
-2006,H,"Spain  -  Tunisia  3-1    (June 19, Gottlieb-Daimler-Stadion) ",Spain,Tunisia,3,1,FALSE,FALSE,FALSE
-2006,H,"Saudi Arabia  -  Ukraine  0-4    (June 19, AOL Arena) ",Saudi Arabia,Ukraine,0,4,FALSE,FALSE,FALSE
-2006,H,"Saudi Arabia  -  Spain  0-1    (June 23, Fritz Walter Stadion) ",Saudi Arabia,Spain,0,1,FALSE,FALSE,FALSE
-2006,H,"Ukraine  -  Tunisia  1-0    (June 23, Olympiastadion) ",Ukraine,Tunisia,1,0,FALSE,FALSE,FALSE
-2006,R16,"Germany  -  Sweden  2-0    (June 24, Allianz Arena) ",Germany,Sweden,2,0,FALSE,FALSE,FALSE
-2006,R16,"Argentina  -  Mexico  2-1 A.E.T    (June 24, Zentralstadion) ",Argentina,Mexico,2,1,FALSE,FALSE,TRUE
-2006,R16,"England  -  Ecuador  1-0    (June 25, Gottlieb-Daimler-Stadion) ",England,Ecuador,1,0,FALSE,FALSE,FALSE
-2006,R16,"Portugal  -  Netherlands  1-0    (June 25, Frankenstadion) ",Portugal,Netherlands,1,0,FALSE,FALSE,FALSE
-2006,R16,"Italy  -  Australia  1-0    (June 26, Fritz Walter Stadion) ",Italy,Australia,1,0,FALSE,FALSE,FALSE
-2006,R16,"Switzerland  -  Ukraine*  0-0 A.E.T    (June 26, RheinEnergie Stadion) ",Switzerland,Ukraine,0,0,FALSE,TRUE,TRUE
-2006,R16,"Brazil  -  Ghana  3-0    (June 27, Westfalenstadion) ",Brazil,Ghana,3,0,FALSE,FALSE,FALSE
-2006,R16,"Spain  -  France  1-3    (June 27, AWD Arena) ",Spain,France,1,3,FALSE,FALSE,FALSE
-2006,QF,"Italy  -  Ukraine  3-0    (June 30, AOL Arena) ",Italy,Ukraine,3,0,FALSE,FALSE,FALSE
-2006,QF,"Germany*  -  Argentina  1-1 A.E.T    (June 30, Olympiastadion) ",Germany,Argentina,1,1,TRUE,FALSE,TRUE
-2006,QF,"England  -  Portugal*  0-0 A.E.T    (July 1, Arena Auf Schalke) ",England,Portugal,0,0,FALSE,TRUE,TRUE
-2006,QF,"Brazil  -  France  0-1    (July 1, Waldstadion) ",Brazil,France,0,1,FALSE,FALSE,FALSE
-2006,SF,"Germany  -  Italy  0-2 A.E.T    (July 4, Westfalenstadion) ",Germany,Italy,0,2,FALSE,FALSE,TRUE
-2006,SF,"Portugal  -  France  0-1    (July 5, Allianz Arena) ",Portugal,France,0,1,FALSE,FALSE,FALSE
-2006,CG,"Germany  -  Portugal  3-1    (July 8, Gottlieb-Daimler-Stadion) ",Germany,Portugal,3,1,FALSE,FALSE,FALSE
-2006,WCF,"Italy*  -  France  1-1 A.E.T    (July 9, Olympiastadion) ",Italy,France,1,1,TRUE,FALSE,TRUE
-2002,A,"France  -  Senegal  0-1    (May 31, Seoul World Cup Stadium) ",France,Senegal,0,1,FALSE,FALSE,FALSE
-2002,A,"Uruguay  -  Denmark  1-2    (June 1, Munsu Football Stadium) ",Uruguay,Denmark,1,2,FALSE,FALSE,FALSE
-2002,A,"France  -  Uruguay  0-0    (June 6, Busan Asiad Main Stadium) ",France,Uruguay,0,0,FALSE,FALSE,FALSE
-2002,A,"Denmark  -  Senegal  1-1    (June 6, Daegu World Cup Stadium) ",Denmark,Senegal,1,1,FALSE,FALSE,FALSE
-2002,A,"Denmark  -  France  2-0    (June 11, Incheon Munhak Stadium) ",Denmark,France,2,0,FALSE,FALSE,FALSE
-2002,A,"Senegal  -  Uruguay  3-3    (June 11, Suwon World Cup Stadium) ",Senegal,Uruguay,3,3,FALSE,FALSE,FALSE
-2002,B,"Paraguay  -  South Africa  2-2    (June 2, Busan Asiad Main Stadium) ",Paraguay,South Africa,2,2,FALSE,FALSE,FALSE
-2002,B,"Spain  -  Slovenia  3-1    (June 2, Gwangju World Cup Stadium) ",Spain,Slovenia,3,1,FALSE,FALSE,FALSE
-2002,B,"Spain  -  Paraguay  3-1    (June 7, Jeonju World Cup Stadium) ",Spain,Paraguay,3,1,FALSE,FALSE,FALSE
-2002,B,"South Africa  -  Slovenia  1-0    (June 8, Daegu World Cup Stadium) ",South Africa,Slovenia,1,0,FALSE,FALSE,FALSE
-2002,B,"South Africa  -  Spain  2-3    (June 12, Daejeon World Cup Stadium) ",South Africa,Spain,2,3,FALSE,FALSE,FALSE
-2002,B,"Slovenia  -  Paraguay  1-3    (June 12, Jeju World Cup Stadium) ",Slovenia,Paraguay,1,3,FALSE,FALSE,FALSE
-2002,C,"Brazil  -  Turkey  2-1    (June 3, Munsu Football Stadium) ",Brazil,Turkey,2,1,FALSE,FALSE,FALSE
-2002,C,"China  -  Costa Rica  0-2    (June 4, Gwangju World Cup Stadium) ",China,Costa Rica,0,2,FALSE,FALSE,FALSE
-2002,C,"Brazil  -  China  4-0    (June 8, Jeju World Cup Stadium) ",Brazil,China,4,0,FALSE,FALSE,FALSE
-2002,C,"Costa Rica  -  Turkey  1-1    (June 9, Incheon Munhak Stadium) ",Costa Rica,Turkey,1,1,FALSE,FALSE,FALSE
-2002,C,"Costa Rica  -  Brazil  2-5    (June 13, Suwon World Cup Stadium) ",Costa Rica,Brazil,2,5,FALSE,FALSE,FALSE
-2002,C,"Turkey  -  China  3-0    (June 13, Seoul World Cup Stadium) ",Turkey,China,3,0,FALSE,FALSE,FALSE
-2002,D,"Korea Republic  -  Poland  2-0    (June 4, Busan Asiad Main Stadium) ",Korea Republic,Poland,2,0,FALSE,FALSE,FALSE
-2002,D,"United States  -  Portugal  3-2    (June 5, Suwon World Cup Stadium) ",United States,Portugal,3,2,FALSE,FALSE,FALSE
-2002,D,"Korea Republic  -  United States  1-1    (June 10, Daegu World Cup Stadium) ",Korea Republic,United States,1,1,FALSE,FALSE,FALSE
-2002,D,"Portugal  -  Poland  4-0    (June 10, Jeonju World Cup Stadium) ",Portugal,Poland,4,0,FALSE,FALSE,FALSE
-2002,D,"Portugal  -  Korea Republic  0-1    (June 14, Incheon Munhak Stadium) ",Portugal,Korea Republic,0,1,FALSE,FALSE,FALSE
-2002,D,"Poland  -  United States  3-1    (June 14, Daejeon World Cup Stadium) ",Poland,United States,3,1,FALSE,FALSE,FALSE
-2002,E,"Ireland  -  Cameroon  1-1    (June 1, Niigata Stadium Big Swan) ",Ireland,Cameroon,1,1,FALSE,FALSE,FALSE
-2002,E,"Germany  -  Saudi Arabia  8-0    (June 1, Sapporo Dome) ",Germany,Saudi Arabia,8,0,FALSE,FALSE,FALSE
-2002,E,"Germany  -  Ireland  1-1    (June 5, Ibaraki Kashima Stadium) ",Germany,Ireland,1,1,FALSE,FALSE,FALSE
-2002,E,"Cameroon  -  Saudi Arabia  1-0    (June 6, Saitama Stadium 2002) ",Cameroon,Saudi Arabia,1,0,FALSE,FALSE,FALSE
-2002,E,"Cameroon  -  Germany  0-2    (June 11, Shizuoka Stadium ECOPA) ",Cameroon,Germany,0,2,FALSE,FALSE,FALSE
-2002,E,"Saudi Arabia  -  Ireland  0-3    (June 11, International Stadium Yokohama) ",Saudi Arabia,Ireland,0,3,FALSE,FALSE,FALSE
-2002,F,"England  -  Sweden  1-1    (June 2, Saitama Stadium 2002) ",England,Sweden,1,1,FALSE,FALSE,FALSE
-2002,F,"Argentina  -  Nigeria  1-0    (June 2, Ibaraki Kashima Stadium) ",Argentina,Nigeria,1,0,FALSE,FALSE,FALSE
-2002,F,"Sweden  -  Nigeria  2-1    (June 7, Kobe Wing Stadium) ",Sweden,Nigeria,2,1,FALSE,FALSE,FALSE
-2002,F,"Argentina  -  England  0-1    (June 7, Sapporo Dome) ",Argentina,England,0,1,FALSE,FALSE,FALSE
-2002,F,"Sweden  -  Argentina  1-1    (June 12, Miyagi Stadium) ",Sweden,Argentina,1,1,FALSE,FALSE,FALSE
-2002,F,"Nigeria  -  England  0-0    (June 12, Osaka Nagai Stadium) ",Nigeria,England,0,0,FALSE,FALSE,FALSE
-2002,G,"Croatia  -  Mexico  0-1    (June 3, Niigata Stadium Big Swan) ",Croatia,Mexico,0,1,FALSE,FALSE,FALSE
-2002,G,"Italy  -  Ecuador  2-0    (June 3, Sapporo Dome) ",Italy,Ecuador,2,0,FALSE,FALSE,FALSE
-2002,G,"Italy  -  Croatia  1-2    (June 8, Ibaraki Kashima Stadium) ",Italy,Croatia,1,2,FALSE,FALSE,FALSE
-2002,G,"Mexico  -  Ecuador  2-1    (June 9, Miyagi Stadium) ",Mexico,Ecuador,2,1,FALSE,FALSE,FALSE
-2002,G,"Mexico  -  Italy  1-1    (June 13, Oita Stadium Big Eye) ",Mexico,Italy,1,1,FALSE,FALSE,FALSE
-2002,G,"Ecuador  -  Croatia  1-0    (June 13, International Stadium Yokohama) ",Ecuador,Croatia,1,0,FALSE,FALSE,FALSE
-2002,H,"Japan  -  Belgium  2-2    (June 4, Saitama Stadium 2002) ",Japan,Belgium,2,2,FALSE,FALSE,FALSE
-2002,H,"Russia  -  Tunisia  2-0    (June 5, Kobe Wing Stadium) ",Russia,Tunisia,2,0,FALSE,FALSE,FALSE
-2002,H,"Japan  -  Russia  1-0    (June 9, International Stadium Yokohama) ",Japan,Russia,1,0,FALSE,FALSE,FALSE
-2002,H,"Tunisia  -  Belgium  1-1    (June 10, Oita Stadium Big Eye) ",Tunisia,Belgium,1,1,FALSE,FALSE,FALSE
-2002,H,"Tunisia  -  Japan  0-2    (June 14, Osaka Nagai Stadium) ",Tunisia,Japan,0,2,FALSE,FALSE,FALSE
-2002,H,"Belgium  -  Russia  3-2    (June 14, Shizuoka Stadium ECOPA) ",Belgium,Russia,3,2,FALSE,FALSE,FALSE
-2002,R16,"Germany  -  Paraguay  1-0    (June 15, Jeju World Cup Stadium) ",Germany,Paraguay,1,0,FALSE,FALSE,FALSE
-2002,R16,"Denmark  -  England  0-3    (June 15, Niigata Stadium Big Swan) ",Denmark,England,0,3,FALSE,FALSE,FALSE
-2002,R16,"Sweden  -  Senegal  1-2 A.E.T    (June 16, Oita Stadium Big Eye) ",Sweden,Senegal,1,2,FALSE,FALSE,TRUE
-2002,R16,"Spain*  -  Ireland  1-1 A.E.T    (June 16, Suwon World Cup Stadium) ",Spain,Ireland,1,1,TRUE,FALSE,TRUE
-2002,R16,"Mexico  -  United States  0-2    (June 17, Jeonju World Cup Stadium) ",Mexico,United States,0,2,FALSE,FALSE,FALSE
-2002,R16,"Brazil  -  Belgium  2-0    (June 17, Kobe Wing Stadium) ",Brazil,Belgium,2,0,FALSE,FALSE,FALSE
-2002,R16,"Japan  -  Turkey  0-1    (June 18, Miyagi Stadium) ",Japan,Turkey,0,1,FALSE,FALSE,FALSE
-2002,R16,"Korea Republic  -  Italy  2-1 A.E.T    (June 18, Daejeon World Cup Stadium) ",Korea Republic,Italy,2,1,FALSE,FALSE,TRUE
-2002,QF,"England  -  Brazil  1-2    (June 21, Shizuoka Stadium ECOPA) ",England,Brazil,1,2,FALSE,FALSE,FALSE
-2002,QF,"Germany  -  United States  1-0    (June 21, Munsu Football Stadium) ",Germany,United States,1,0,FALSE,FALSE,FALSE
-2002,QF,"Spain  -  Korea Republic*  0-0 A.E.T    (June 22, Gwangju World Cup Stadium) ",Spain,Korea Republic,0,0,FALSE,TRUE,TRUE
-2002,QF,"Senegal  -  Turkey  0-1 A.E.T    (June 22, Osaka Nagai Stadium) ",Senegal,Turkey,0,1,FALSE,FALSE,TRUE
-2002,SF,"Germany  -  Korea Republic  1-0    (June 25, Seoul World Cup Stadium) ",Germany,Korea Republic,1,0,FALSE,FALSE,FALSE
-2002,SF,"Brazil  -  Turkey  1-0    (June 26, Saitama Stadium 2002) ",Brazil,Turkey,1,0,FALSE,FALSE,FALSE
-2002,CG,"Korea Republic  -  Turkey  2-3    (June 29, Daegu World Cup Stadium) ",Korea Republic,Turkey,2,3,FALSE,FALSE,FALSE
-2002,WCF,"Germany  -  Brazil  0-2    (June 30, International Stadium Yokohama) ",Germany,Brazil,0,2,FALSE,FALSE,FALSE
+"year","rd","result","team1","team2","score1","score2","pk1","pk2","et"
+2010,"A","South Africa  -  Mexico  1-1    (June 11, Soccer City Stadium) ","South Africa","Mexico",1,1,FALSE,FALSE,FALSE
+2010,"A","Uruguay  -  France  0-0    (June 11, Green Point Stadium) ","Uruguay","France",0,0,FALSE,FALSE,FALSE
+2010,"A","South Africa  -  Uruguay  0-3    (June 16, Loftus Versfeld Stadium) ","South Africa","Uruguay",0,3,FALSE,FALSE,FALSE
+2010,"A","France  -  Mexico  0-2    (June 17, Peter Mokaba Stadium) ","France","Mexico",0,2,FALSE,FALSE,FALSE
+2010,"A","Mexico  -  Uruguay  0-1    (June 22, Royal Bafokeng Stadium) ","Mexico","Uruguay",0,1,FALSE,FALSE,FALSE
+2010,"A","France  -  South Africa  1-2    (June 22, Free State Stadium) ","France","South Africa",1,2,FALSE,FALSE,FALSE
+2010,"B","Argentina  -  Nigeria  1-0    (June 12, Ellis Park Stadium) ","Argentina","Nigeria",1,0,FALSE,FALSE,FALSE
+2010,"B","Korea Republic  -  Greece  2-0    (June 12, Nelson Mandela Bay) ","Korea Republic","Greece",2,0,FALSE,FALSE,FALSE
+2010,"B","Greece  -  Nigeria  2-1    (June 17, Free State Stadium) ","Greece","Nigeria",2,1,FALSE,FALSE,FALSE
+2010,"B","Argentina  -  Korea Republic  4-1    (June 17, Soccer City Stadium) ","Argentina","Korea Republic",4,1,FALSE,FALSE,FALSE
+2010,"B","Nigeria  -  Korea Republic  2-2    (June 22, Moses Mabhida Stadium) ","Nigeria","Korea Republic",2,2,FALSE,FALSE,FALSE
+2010,"B","Greece  -  Argentina  0-2    (June 22, Peter Mokaba Stadium) ","Greece","Argentina",0,2,FALSE,FALSE,FALSE
+2010,"C","England  -  United States  1-1    (June 12, Royal Bafokeng Stadium) ","England","United States",1,1,FALSE,FALSE,FALSE
+2010,"C","Algeria  -  Slovenia  0-1    (June 13, Peter Mokaba Stadium) ","Algeria","Slovenia",0,1,FALSE,FALSE,FALSE
+2010,"C","Slovenia  -  United States  2-2    (June 18, Ellis Park Stadium) ","Slovenia","United States",2,2,FALSE,FALSE,FALSE
+2010,"C","England  -  Algeria  0-0    (June 18, Green Point Stadium) ","England","Algeria",0,0,FALSE,FALSE,FALSE
+2010,"C","Slovenia  -  England  0-1    (June 23, Nelson Mandela Bay) ","Slovenia","England",0,1,FALSE,FALSE,FALSE
+2010,"C","United States  -  Algeria  1-0    (June 23, Loftus Versfeld Stadium) ","United States","Algeria",1,0,FALSE,FALSE,FALSE
+2010,"D","Germany  -  Australia  4-0    (June 13, Moses Mabhida Stadium) ","Germany","Australia",4,0,FALSE,FALSE,FALSE
+2010,"D","Serbia  -  Ghana  0-1    (June 13, Loftus Versfeld Stadium) ","Serbia","Ghana",0,1,FALSE,FALSE,FALSE
+2010,"D","Germany  -  Serbia  0-1    (June 18, Nelson Mandela Bay) ","Germany","Serbia",0,1,FALSE,FALSE,FALSE
+2010,"D","Ghana  -  Australia  1-1    (June 19, Royal Bafokeng Stadium) ","Ghana","Australia",1,1,FALSE,FALSE,FALSE
+2010,"D","Ghana  -  Germany  0-1    (June 23, Soccer City Stadium) ","Ghana","Germany",0,1,FALSE,FALSE,FALSE
+2010,"D","Australia  -  Serbia  2-1    (June 23, Mbombela Stadium) ","Australia","Serbia",2,1,FALSE,FALSE,FALSE
+2010,"E","Netherlands  -  Denmark  2-0    (June 14, Soccer City Stadium) ","Netherlands","Denmark",2,0,FALSE,FALSE,FALSE
+2010,"E","Japan  -  Cameroon  1-0    (June 14, Free State Stadium) ","Japan","Cameroon",1,0,FALSE,FALSE,FALSE
+2010,"E","Netherlands  -  Japan  1-0    (June 19, Moses Mabhida Stadium) ","Netherlands","Japan",1,0,FALSE,FALSE,FALSE
+2010,"E","Cameroon  -  Denmark  1-2    (June 19, Loftus Versfeld Stadium) ","Cameroon","Denmark",1,2,FALSE,FALSE,FALSE
+2010,"E","Denmark  -  Japan  1-3    (June 24, Royal Bafokeng Stadium) ","Denmark","Japan",1,3,FALSE,FALSE,FALSE
+2010,"E","Cameroon  -  Netherlands  1-2    (June 24, Green Point Stadium) ","Cameroon","Netherlands",1,2,FALSE,FALSE,FALSE
+2010,"F","Italy  -  Paraguay  1-1    (June 14, Green Point Stadium) ","Italy","Paraguay",1,1,FALSE,FALSE,FALSE
+2010,"F","New Zealand  -  Slovakia  1-1    (June 15, Royal Bafokeng Stadium) ","New Zealand","Slovakia",1,1,FALSE,FALSE,FALSE
+2010,"F","Slovakia  -  Paraguay  0-2    (June 20, Free State Stadium) ","Slovakia","Paraguay",0,2,FALSE,FALSE,FALSE
+2010,"F","Italy  -  New Zealand  1-1    (June 20, Mbombela Stadium) ","Italy","New Zealand",1,1,FALSE,FALSE,FALSE
+2010,"F","Slovakia  -  Italy  3-2    (June 24, Ellis Park Stadium) ","Slovakia","Italy",3,2,FALSE,FALSE,FALSE
+2010,"F","Paraguay  -  New Zealand  0-0    (June 24, Peter Mokaba Stadium) ","Paraguay","New Zealand",0,0,FALSE,FALSE,FALSE
+2010,"G","Cote d`Ivoire  -  Portugal  0-0    (June 15, Nelson Mandela Bay) ","Cote d`Ivoire","Portugal",0,0,FALSE,FALSE,FALSE
+2010,"G","Brazil  -  Korea DPR  2-1    (June 15, Ellis Park Stadium) ","Brazil","Korea DPR",2,1,FALSE,FALSE,FALSE
+2010,"G","Brazil  -  Cote d`Ivoire  3-1    (June 20, Soccer City Stadium) ","Brazil","Cote d`Ivoire",3,1,FALSE,FALSE,FALSE
+2010,"G","Portugal  -  Korea DPR  7-0    (June 21, Green Point Stadium) ","Portugal","Korea DPR",7,0,FALSE,FALSE,FALSE
+2010,"G","Portugal  -  Brazil  0-0    (June 25, Moses Mabhida Stadium) ","Portugal","Brazil",0,0,FALSE,FALSE,FALSE
+2010,"G","Korea DPR  -  Cote d`Ivoire  0-3    (June 25, Mbombela Stadium) ","Korea DPR","Cote d`Ivoire",0,3,FALSE,FALSE,FALSE
+2010,"H","Honduras  -  Chile  0-1    (June 16, Mbombela Stadium) ","Honduras","Chile",0,1,FALSE,FALSE,FALSE
+2010,"H","Spain  -  Switzerland  0-1    (June 16, Moses Mabhida Stadium) ","Spain","Switzerland",0,1,FALSE,FALSE,FALSE
+2010,"H","Chile  -  Switzerland  1-0    (June 21, Nelson Mandela Bay) ","Chile","Switzerland",1,0,FALSE,FALSE,FALSE
+2010,"H","Spain  -  Honduras  2-0    (June 21, Ellis Park Stadium) ","Spain","Honduras",2,0,FALSE,FALSE,FALSE
+2010,"H","Chile  -  Spain  1-2    (June 25, Loftus Versfeld Stadium) ","Chile","Spain",1,2,FALSE,FALSE,FALSE
+2010,"H","Switzerland  -  Honduras  0-0    (June 25, Free State Stadium) ","Switzerland","Honduras",0,0,FALSE,FALSE,FALSE
+2010,"R16","Uruguay  -  Korea Republic  2-1    (June 26, Nelson Mandela Bay) ","Uruguay","Korea Republic",2,1,FALSE,FALSE,FALSE
+2010,"R16","United States  -  Ghana  1-2 A.E.T    (June 26, Royal Bafokeng Stadium) ","United States","Ghana",1,2,FALSE,FALSE,TRUE
+2010,"R16","Germany  -  England  4-1    (June 27, Free State Stadium) ","Germany","England",4,1,FALSE,FALSE,FALSE
+2010,"R16","Argentina  -  Mexico  3-1    (June 27, Soccer City Stadium) ","Argentina","Mexico",3,1,FALSE,FALSE,FALSE
+2010,"R16","Netherlands  -  Slovakia  2-1    (June 28, Moses Mabhida Stadium) ","Netherlands","Slovakia",2,1,FALSE,FALSE,FALSE
+2010,"R16","Brazil  -  Chile  3-0    (June 28, Ellis Park Stadium) ","Brazil","Chile",3,0,FALSE,FALSE,FALSE
+2010,"R16","Paraguay*  -  Japan  0-0 A.E.T    (June 29, Loftus Versfeld Stadium) ","Paraguay","Japan",0,0,TRUE,FALSE,TRUE
+2010,"R16","Spain  -  Portugal  1-0    (June 29, Green Point Stadium) ","Spain","Portugal",1,0,FALSE,FALSE,FALSE
+2010,"QF","Uruguay*  -  Ghana  1-1 A.E.T    (July 2, Soccer City Stadium) ","Uruguay","Ghana",1,1,TRUE,FALSE,TRUE
+2010,"QF","Netherlands  -  Brazil  2-1    (July 2, Nelson Mandela Bay) ","Netherlands","Brazil",2,1,FALSE,FALSE,FALSE
+2010,"QF","Paraguay  -  Spain  0-1    (July 3, Ellis Park Stadium) ","Paraguay","Spain",0,1,FALSE,FALSE,FALSE
+2010,"QF","Argentina  -  Germany  0-4    (July 3, Green Point Stadium) ","Argentina","Germany",0,4,FALSE,FALSE,FALSE
+2010,"SF","Uruguay  -  Netherlands  2-3    (July 6, Green Point Stadium) ","Uruguay","Netherlands",2,3,FALSE,FALSE,FALSE
+2010,"SF","Germany  -  Spain  0-1    (July 7, Moses Mabhida Stadium) ","Germany","Spain",0,1,FALSE,FALSE,FALSE
+2010,"CG","Uruguay  -  Germany  2-3    (July 10, Nelson Mandela Bay) ","Uruguay","Germany",2,3,FALSE,FALSE,FALSE
+2010,"WCF","Netherlands  -  Spain  0-1 A.E.T    (July 11, Soccer City Stadium) ","Netherlands","Spain",0,1,FALSE,FALSE,TRUE
+2006,"A","Poland  -  Ecuador  0-2    (June 9, Arena Auf Schalke) ","Poland","Ecuador",0,2,FALSE,FALSE,FALSE
+2006,"A","Germany  -  Costa Rica  4-2    (June 9, Allianz Arena) ","Germany","Costa Rica",4,2,FALSE,FALSE,FALSE
+2006,"A","Germany  -  Poland  1-0    (June 14, Westfalenstadion) ","Germany","Poland",1,0,FALSE,FALSE,FALSE
+2006,"A","Ecuador  -  Costa Rica  3-0    (June 15, AOL Arena) ","Ecuador","Costa Rica",3,0,FALSE,FALSE,FALSE
+2006,"A","Ecuador  -  Germany  0-3    (June 20, Olympiastadion) ","Ecuador","Germany",0,3,FALSE,FALSE,FALSE
+2006,"A","Costa Rica  -  Poland  1-2    (June 20, AWD Arena) ","Costa Rica","Poland",1,2,FALSE,FALSE,FALSE
+2006,"B","England  -  Paraguay  1-0    (June 10, Waldstadion) ","England","Paraguay",1,0,FALSE,FALSE,FALSE
+2006,"B","Trinidad And Tobago  -  Sweden  0-0    (June 10, Westfalenstadion) ","Trinidad And Tobago","Sweden",0,0,FALSE,FALSE,FALSE
+2006,"B","England  -  Trinidad And Tobago  2-0    (June 15, Frankenstadion) ","England","Trinidad And Tobago",2,0,FALSE,FALSE,FALSE
+2006,"B","Sweden  -  Paraguay  1-0    (June 15, Olympiastadion) ","Sweden","Paraguay",1,0,FALSE,FALSE,FALSE
+2006,"B","Sweden  -  England  2-2    (June 20, RheinEnergie Stadion) ","Sweden","England",2,2,FALSE,FALSE,FALSE
+2006,"B","Paraguay  -  Trinidad And Tobago  2-0    (June 20, Fritz Walter Stadion) ","Paraguay","Trinidad And Tobago",2,0,FALSE,FALSE,FALSE
+2006,"C","Argentina  -  Cote d`Ivoire  2-1    (June 10, HSH Nordbank Arena) ","Argentina","Cote d`Ivoire",2,1,FALSE,FALSE,FALSE
+2006,"C","Serbia and Montenegro  -  Netherlands  0-1    (June 11, Zentralstadion) ","Serbia and Montenegro","Netherlands",0,1,FALSE,FALSE,FALSE
+2006,"C","Argentina  -  Serbia and Montenegro  6-0    (June 16, Arena Auf Schalke) ","Argentina","Serbia and Montenegro",6,0,FALSE,FALSE,FALSE
+2006,"C","Netherlands  -  Cote d`Ivoire  2-1    (June 16, Gottlieb-Daimler-Stadion) ","Netherlands","Cote d`Ivoire",2,1,FALSE,FALSE,FALSE
+2006,"C","Netherlands  -  Argentina  0-0    (June 21, Waldstadion) ","Netherlands","Argentina",0,0,FALSE,FALSE,FALSE
+2006,"C","Cote d`Ivoire  -  Serbia and Montenegro  3-2    (June 21, Allianz Arena) ","Cote d`Ivoire","Serbia and Montenegro",3,2,FALSE,FALSE,FALSE
+2006,"D","Mexico  -  Iran  3-1    (June 11, Frankenstadion) ","Mexico","Iran",3,1,FALSE,FALSE,FALSE
+2006,"D","Angola  -  Portugal  0-1    (June 11, RheinEnergie Stadion) ","Angola","Portugal",0,1,FALSE,FALSE,FALSE
+2006,"D","Mexico  -  Angola  0-0    (June 16, AWD Arena) ","Mexico","Angola",0,0,FALSE,FALSE,FALSE
+2006,"D","Portugal  -  Iran  2-0    (June 17, Waldstadion) ","Portugal","Iran",2,0,FALSE,FALSE,FALSE
+2006,"D","Portugal  -  Mexico  2-1    (June 21, Arena Auf Schalke) ","Portugal","Mexico",2,1,FALSE,FALSE,FALSE
+2006,"D","Iran  -  Angola  1-1    (June 21, Zentralstadion) ","Iran","Angola",1,1,FALSE,FALSE,FALSE
+2006,"E","Italy  -  Ghana  2-0    (June 12, AWD Arena) ","Italy","Ghana",2,0,FALSE,FALSE,FALSE
+2006,"E","United States  -  Czech Republic  0-3    (June 12, Arena Auf Schalke) ","United States","Czech Republic",0,3,FALSE,FALSE,FALSE
+2006,"E","Italy  -  United States  1-1    (June 17, Fritz Walter Stadion) ","Italy","United States",1,1,FALSE,FALSE,FALSE
+2006,"E","Czech Republic  -  Ghana  0-2    (June 17, RheinEnergie Stadion) ","Czech Republic","Ghana",0,2,FALSE,FALSE,FALSE
+2006,"E","Ghana  -  United States  2-1    (June 22, Frankenstadion) ","Ghana","United States",2,1,FALSE,FALSE,FALSE
+2006,"E","Czech Republic  -  Italy  0-2    (June 22, HSH Nordbank Arena) ","Czech Republic","Italy",0,2,FALSE,FALSE,FALSE
+2006,"F","Australia  -  Japan  3-1    (June 12, Fritz Walter Stadion) ","Australia","Japan",3,1,FALSE,FALSE,FALSE
+2006,"F","Brazil  -  Croatia  1-0    (June 13, Olympiastadion) ","Brazil","Croatia",1,0,FALSE,FALSE,FALSE
+2006,"F","Brazil  -  Australia  2-0    (June 18, Allianz Arena) ","Brazil","Australia",2,0,FALSE,FALSE,FALSE
+2006,"F","Japan  -  Croatia  0-0    (June 18, Frankenstadion) ","Japan","Croatia",0,0,FALSE,FALSE,FALSE
+2006,"F","Japan  -  Brazil  1-4    (June 22, Westfalenstadion) ","Japan","Brazil",1,4,FALSE,FALSE,FALSE
+2006,"F","Croatia  -  Australia  2-2    (June 22, Gottlieb-Daimler-Stadion) ","Croatia","Australia",2,2,FALSE,FALSE,FALSE
+2006,"G","France  -  Switzerland  0-0    (June 13, Gottlieb-Daimler-Stadion) ","France","Switzerland",0,0,FALSE,FALSE,FALSE
+2006,"G","Korea Republic  -  Togo  2-1    (June 13, Waldstadion) ","Korea Republic","Togo",2,1,FALSE,FALSE,FALSE
+2006,"G","France  -  Korea Republic  1-1    (June 18, Zentralstadion) ","France","Korea Republic",1,1,FALSE,FALSE,FALSE
+2006,"G","Togo  -  Switzerland  0-2    (June 19, Westfalenstadion) ","Togo","Switzerland",0,2,FALSE,FALSE,FALSE
+2006,"G","Togo  -  France  0-2    (June 23, RheinEnergie Stadion) ","Togo","France",0,2,FALSE,FALSE,FALSE
+2006,"G","Switzerland  -  Korea Republic  2-0    (June 23, AWD Arena) ","Switzerland","Korea Republic",2,0,FALSE,FALSE,FALSE
+2006,"H","Tunisia  -  Saudi Arabia  2-2    (June 14, Allianz Arena) ","Tunisia","Saudi Arabia",2,2,FALSE,FALSE,FALSE
+2006,"H","Spain  -  Ukraine  4-0    (June 14, Zentralstadion) ","Spain","Ukraine",4,0,FALSE,FALSE,FALSE
+2006,"H","Spain  -  Tunisia  3-1    (June 19, Gottlieb-Daimler-Stadion) ","Spain","Tunisia",3,1,FALSE,FALSE,FALSE
+2006,"H","Saudi Arabia  -  Ukraine  0-4    (June 19, AOL Arena) ","Saudi Arabia","Ukraine",0,4,FALSE,FALSE,FALSE
+2006,"H","Saudi Arabia  -  Spain  0-1    (June 23, Fritz Walter Stadion) ","Saudi Arabia","Spain",0,1,FALSE,FALSE,FALSE
+2006,"H","Ukraine  -  Tunisia  1-0    (June 23, Olympiastadion) ","Ukraine","Tunisia",1,0,FALSE,FALSE,FALSE
+2006,"R16","Germany  -  Sweden  2-0    (June 24, Allianz Arena) ","Germany","Sweden",2,0,FALSE,FALSE,FALSE
+2006,"R16","Argentina  -  Mexico  2-1 A.E.T    (June 24, Zentralstadion) ","Argentina","Mexico",2,1,FALSE,FALSE,TRUE
+2006,"R16","England  -  Ecuador  1-0    (June 25, Gottlieb-Daimler-Stadion) ","England","Ecuador",1,0,FALSE,FALSE,FALSE
+2006,"R16","Portugal  -  Netherlands  1-0    (June 25, Frankenstadion) ","Portugal","Netherlands",1,0,FALSE,FALSE,FALSE
+2006,"R16","Italy  -  Australia  1-0    (June 26, Fritz Walter Stadion) ","Italy","Australia",1,0,FALSE,FALSE,FALSE
+2006,"R16","Switzerland  -  Ukraine*  0-0 A.E.T    (June 26, RheinEnergie Stadion) ","Switzerland","Ukraine",0,0,FALSE,TRUE,TRUE
+2006,"R16","Brazil  -  Ghana  3-0    (June 27, Westfalenstadion) ","Brazil","Ghana",3,0,FALSE,FALSE,FALSE
+2006,"R16","Spain  -  France  1-3    (June 27, AWD Arena) ","Spain","France",1,3,FALSE,FALSE,FALSE
+2006,"QF","Italy  -  Ukraine  3-0    (June 30, AOL Arena) ","Italy","Ukraine",3,0,FALSE,FALSE,FALSE
+2006,"QF","Germany*  -  Argentina  1-1 A.E.T    (June 30, Olympiastadion) ","Germany","Argentina",1,1,TRUE,FALSE,TRUE
+2006,"QF","England  -  Portugal*  0-0 A.E.T    (July 1, Arena Auf Schalke) ","England","Portugal",0,0,FALSE,TRUE,TRUE
+2006,"QF","Brazil  -  France  0-1    (July 1, Waldstadion) ","Brazil","France",0,1,FALSE,FALSE,FALSE
+2006,"SF","Germany  -  Italy  0-2 A.E.T    (July 4, Westfalenstadion) ","Germany","Italy",0,2,FALSE,FALSE,TRUE
+2006,"SF","Portugal  -  France  0-1    (July 5, Allianz Arena) ","Portugal","France",0,1,FALSE,FALSE,FALSE
+2006,"CG","Germany  -  Portugal  3-1    (July 8, Gottlieb-Daimler-Stadion) ","Germany","Portugal",3,1,FALSE,FALSE,FALSE
+2006,"WCF","Italy*  -  France  1-1 A.E.T    (July 9, Olympiastadion) ","Italy","France",1,1,TRUE,FALSE,TRUE
+2002,"A","France  -  Senegal  0-1    (May 31, Seoul World Cup Stadium) ","France","Senegal",0,1,FALSE,FALSE,FALSE
+2002,"A","Uruguay  -  Denmark  1-2    (June 1, Munsu Football Stadium) ","Uruguay","Denmark",1,2,FALSE,FALSE,FALSE
+2002,"A","France  -  Uruguay  0-0    (June 6, Busan Asiad Main Stadium) ","France","Uruguay",0,0,FALSE,FALSE,FALSE
+2002,"A","Denmark  -  Senegal  1-1    (June 6, Daegu World Cup Stadium) ","Denmark","Senegal",1,1,FALSE,FALSE,FALSE
+2002,"A","Denmark  -  France  2-0    (June 11, Incheon Munhak Stadium) ","Denmark","France",2,0,FALSE,FALSE,FALSE
+2002,"A","Senegal  -  Uruguay  3-3    (June 11, Suwon World Cup Stadium) ","Senegal","Uruguay",3,3,FALSE,FALSE,FALSE
+2002,"B","Paraguay  -  South Africa  2-2    (June 2, Busan Asiad Main Stadium) ","Paraguay","South Africa",2,2,FALSE,FALSE,FALSE
+2002,"B","Spain  -  Slovenia  3-1    (June 2, Gwangju World Cup Stadium) ","Spain","Slovenia",3,1,FALSE,FALSE,FALSE
+2002,"B","Spain  -  Paraguay  3-1    (June 7, Jeonju World Cup Stadium) ","Spain","Paraguay",3,1,FALSE,FALSE,FALSE
+2002,"B","South Africa  -  Slovenia  1-0    (June 8, Daegu World Cup Stadium) ","South Africa","Slovenia",1,0,FALSE,FALSE,FALSE
+2002,"B","South Africa  -  Spain  2-3    (June 12, Daejeon World Cup Stadium) ","South Africa","Spain",2,3,FALSE,FALSE,FALSE
+2002,"B","Slovenia  -  Paraguay  1-3    (June 12, Jeju World Cup Stadium) ","Slovenia","Paraguay",1,3,FALSE,FALSE,FALSE
+2002,"C","Brazil  -  Turkey  2-1    (June 3, Munsu Football Stadium) ","Brazil","Turkey",2,1,FALSE,FALSE,FALSE
+2002,"C","China  -  Costa Rica  0-2    (June 4, Gwangju World Cup Stadium) ","China","Costa Rica",0,2,FALSE,FALSE,FALSE
+2002,"C","Brazil  -  China  4-0    (June 8, Jeju World Cup Stadium) ","Brazil","China",4,0,FALSE,FALSE,FALSE
+2002,"C","Costa Rica  -  Turkey  1-1    (June 9, Incheon Munhak Stadium) ","Costa Rica","Turkey",1,1,FALSE,FALSE,FALSE
+2002,"C","Costa Rica  -  Brazil  2-5    (June 13, Suwon World Cup Stadium) ","Costa Rica","Brazil",2,5,FALSE,FALSE,FALSE
+2002,"C","Turkey  -  China  3-0    (June 13, Seoul World Cup Stadium) ","Turkey","China",3,0,FALSE,FALSE,FALSE
+2002,"D","Korea Republic  -  Poland  2-0    (June 4, Busan Asiad Main Stadium) ","Korea Republic","Poland",2,0,FALSE,FALSE,FALSE
+2002,"D","United States  -  Portugal  3-2    (June 5, Suwon World Cup Stadium) ","United States","Portugal",3,2,FALSE,FALSE,FALSE
+2002,"D","Korea Republic  -  United States  1-1    (June 10, Daegu World Cup Stadium) ","Korea Republic","United States",1,1,FALSE,FALSE,FALSE
+2002,"D","Portugal  -  Poland  4-0    (June 10, Jeonju World Cup Stadium) ","Portugal","Poland",4,0,FALSE,FALSE,FALSE
+2002,"D","Portugal  -  Korea Republic  0-1    (June 14, Incheon Munhak Stadium) ","Portugal","Korea Republic",0,1,FALSE,FALSE,FALSE
+2002,"D","Poland  -  United States  3-1    (June 14, Daejeon World Cup Stadium) ","Poland","United States",3,1,FALSE,FALSE,FALSE
+2002,"E","Ireland  -  Cameroon  1-1    (June 1, Niigata Stadium Big Swan) ","Ireland","Cameroon",1,1,FALSE,FALSE,FALSE
+2002,"E","Germany  -  Saudi Arabia  8-0    (June 1, Sapporo Dome) ","Germany","Saudi Arabia",8,0,FALSE,FALSE,FALSE
+2002,"E","Germany  -  Ireland  1-1    (June 5, Ibaraki Kashima Stadium) ","Germany","Ireland",1,1,FALSE,FALSE,FALSE
+2002,"E","Cameroon  -  Saudi Arabia  1-0    (June 6, Saitama Stadium 2002) ","Cameroon","Saudi Arabia",1,0,FALSE,FALSE,FALSE
+2002,"E","Cameroon  -  Germany  0-2    (June 11, Shizuoka Stadium ECOPA) ","Cameroon","Germany",0,2,FALSE,FALSE,FALSE
+2002,"E","Saudi Arabia  -  Ireland  0-3    (June 11, International Stadium Yokohama) ","Saudi Arabia","Ireland",0,3,FALSE,FALSE,FALSE
+2002,"F","England  -  Sweden  1-1    (June 2, Saitama Stadium 2002) ","England","Sweden",1,1,FALSE,FALSE,FALSE
+2002,"F","Argentina  -  Nigeria  1-0    (June 2, Ibaraki Kashima Stadium) ","Argentina","Nigeria",1,0,FALSE,FALSE,FALSE
+2002,"F","Sweden  -  Nigeria  2-1    (June 7, Kobe Wing Stadium) ","Sweden","Nigeria",2,1,FALSE,FALSE,FALSE
+2002,"F","Argentina  -  England  0-1    (June 7, Sapporo Dome) ","Argentina","England",0,1,FALSE,FALSE,FALSE
+2002,"F","Sweden  -  Argentina  1-1    (June 12, Miyagi Stadium) ","Sweden","Argentina",1,1,FALSE,FALSE,FALSE
+2002,"F","Nigeria  -  England  0-0    (June 12, Osaka Nagai Stadium) ","Nigeria","England",0,0,FALSE,FALSE,FALSE
+2002,"G","Croatia  -  Mexico  0-1    (June 3, Niigata Stadium Big Swan) ","Croatia","Mexico",0,1,FALSE,FALSE,FALSE
+2002,"G","Italy  -  Ecuador  2-0    (June 3, Sapporo Dome) ","Italy","Ecuador",2,0,FALSE,FALSE,FALSE
+2002,"G","Italy  -  Croatia  1-2    (June 8, Ibaraki Kashima Stadium) ","Italy","Croatia",1,2,FALSE,FALSE,FALSE
+2002,"G","Mexico  -  Ecuador  2-1    (June 9, Miyagi Stadium) ","Mexico","Ecuador",2,1,FALSE,FALSE,FALSE
+2002,"G","Mexico  -  Italy  1-1    (June 13, Oita Stadium Big Eye) ","Mexico","Italy",1,1,FALSE,FALSE,FALSE
+2002,"G","Ecuador  -  Croatia  1-0    (June 13, International Stadium Yokohama) ","Ecuador","Croatia",1,0,FALSE,FALSE,FALSE
+2002,"H","Japan  -  Belgium  2-2    (June 4, Saitama Stadium 2002) ","Japan","Belgium",2,2,FALSE,FALSE,FALSE
+2002,"H","Russia  -  Tunisia  2-0    (June 5, Kobe Wing Stadium) ","Russia","Tunisia",2,0,FALSE,FALSE,FALSE
+2002,"H","Japan  -  Russia  1-0    (June 9, International Stadium Yokohama) ","Japan","Russia",1,0,FALSE,FALSE,FALSE
+2002,"H","Tunisia  -  Belgium  1-1    (June 10, Oita Stadium Big Eye) ","Tunisia","Belgium",1,1,FALSE,FALSE,FALSE
+2002,"H","Tunisia  -  Japan  0-2    (June 14, Osaka Nagai Stadium) ","Tunisia","Japan",0,2,FALSE,FALSE,FALSE
+2002,"H","Belgium  -  Russia  3-2    (June 14, Shizuoka Stadium ECOPA) ","Belgium","Russia",3,2,FALSE,FALSE,FALSE
+2002,"R16","Germany  -  Paraguay  1-0    (June 15, Jeju World Cup Stadium) ","Germany","Paraguay",1,0,FALSE,FALSE,FALSE
+2002,"R16","Denmark  -  England  0-3    (June 15, Niigata Stadium Big Swan) ","Denmark","England",0,3,FALSE,FALSE,FALSE
+2002,"R16","Sweden  -  Senegal  1-2 A.E.T    (June 16, Oita Stadium Big Eye) ","Sweden","Senegal",1,2,FALSE,FALSE,TRUE
+2002,"R16","Spain*  -  Ireland  1-1 A.E.T    (June 16, Suwon World Cup Stadium) ","Spain","Ireland",1,1,TRUE,FALSE,TRUE
+2002,"R16","Mexico  -  United States  0-2    (June 17, Jeonju World Cup Stadium) ","Mexico","United States",0,2,FALSE,FALSE,FALSE
+2002,"R16","Brazil  -  Belgium  2-0    (June 17, Kobe Wing Stadium) ","Brazil","Belgium",2,0,FALSE,FALSE,FALSE
+2002,"R16","Japan  -  Turkey  0-1    (June 18, Miyagi Stadium) ","Japan","Turkey",0,1,FALSE,FALSE,FALSE
+2002,"R16","Korea Republic  -  Italy  2-1 A.E.T    (June 18, Daejeon World Cup Stadium) ","Korea Republic","Italy",2,1,FALSE,FALSE,TRUE
+2002,"QF","England  -  Brazil  1-2    (June 21, Shizuoka Stadium ECOPA) ","England","Brazil",1,2,FALSE,FALSE,FALSE
+2002,"QF","Germany  -  United States  1-0    (June 21, Munsu Football Stadium) ","Germany","United States",1,0,FALSE,FALSE,FALSE
+2002,"QF","Spain  -  Korea Republic*  0-0 A.E.T    (June 22, Gwangju World Cup Stadium) ","Spain","Korea Republic",0,0,FALSE,TRUE,TRUE
+2002,"QF","Senegal  -  Turkey  0-1 A.E.T    (June 22, Osaka Nagai Stadium) ","Senegal","Turkey",0,1,FALSE,FALSE,TRUE
+2002,"SF","Germany  -  Korea Republic  1-0    (June 25, Seoul World Cup Stadium) ","Germany","Korea Republic",1,0,FALSE,FALSE,FALSE
+2002,"SF","Brazil  -  Turkey  1-0    (June 26, Saitama Stadium 2002) ","Brazil","Turkey",1,0,FALSE,FALSE,FALSE
+2002,"CG","Korea Republic  -  Turkey  2-3    (June 29, Daegu World Cup Stadium) ","Korea Republic","Turkey",2,3,FALSE,FALSE,FALSE
+2002,"WCF","Germany  -  Brazil  0-2    (June 30, International Stadium Yokohama) ","Germany","Brazil",0,2,FALSE,FALSE,FALSE
