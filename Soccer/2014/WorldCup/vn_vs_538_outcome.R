@@ -13,7 +13,7 @@ setwd(paste0(HOMEDIR,"/Soccer/2014/WorldCup/"))
 team.df <- read.csv('vn_vs_538_predictions.csv',stringsAsFactors=F)
 
 advance <- c(
-  "Algeria",
+  "Algeria",#"Algeria"#"Russia"
   "Argentina",
   "Belgium",
   "Brazil",
@@ -22,12 +22,12 @@ advance <- c(
   "Costa Rica",
   "France",
   "Germany",
-  "Greece",#"Cote d`Ivoire"#"Greece"
+  "Greece",#"Greece"#"Cote d`Ivoire"
   "Mexico",
   "Netherlands",
   "Nigeria",
-  "Ecuador",#"Switzerland"#"Ecuador"
-  "Uruguay",
+  "Switzerland",#"Switzerland"#"Ecuador"
+  "Uruguay",#Uruguay#"Italy"
   "United States"#"United States"#"Ghana"
   )
 
@@ -51,3 +51,21 @@ ggplot(team.df) +
   xlab("Absolute Miss")
 
 
+plot.df <- data.frame(
+  team = c(team.df$team,team.df$team),
+  site = rep(c("VN","538"),each=nrow(team.df)),
+  miss = with(team.df,c(abs(adv-prob_vn),abs(adv-prob_538)))
+  )
+
+plot.df$team <- factor(plot.df$team,levels=with(team.df,team[order((abs(adv - prob_538) + abs(adv - prob_vn))/2)]))
+plot.df$bigger <- sapply(1:nrow(plot.df),function(i){subset(plot.df,team==plot.df$team[i])$site[order(-subset(plot.df,team==plot.df$team[i])$miss)[1]]})
+
+ggplot(plot.df,aes(x=team,y=miss,fill=site)) + geom_bar(stat='identity',position="dodge") + coord_flip()
+
+ggplot(plot.df,aes(x=team,y=miss)) +
+  geom_line(aes(group=team,color=bigger),size=1) +
+  geom_point(aes(color=site),size=4) +
+  coord_flip()
+
+
+with(plot.df,apply(1)
