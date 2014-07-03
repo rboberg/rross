@@ -92,6 +92,18 @@ bar.df <- data.frame(
                 with(team.df, mean(abs(adv - prob_vn))),
                 0.5
                 ),
+            root.mse =
+              c(
+                with(team.df, mean((adv - prob_538)^2)^0.5),
+                with(team.df, mean((adv - prob_vn)^2)^0.5),
+                0.5
+                ),
+            se =
+              c(
+                with(team.df, sd((adv - prob_538)^2)^0.5),
+                with(team.df, sd((adv - prob_vn)^2)^0.5),
+                0.5
+                ),
             site=c('FiveThirtyEight','VividNumeral', 'EqualChance')
             )
 
@@ -99,13 +111,13 @@ barT <- ggplot(bar.df) +
   geom_bar(aes(x=site,y=miss,fill=site),stat='identity') +
   scale_fill_manual(values=c(FiveThirtyEight=rgb(1,0,0),VividNumeral=rgb(0,120/256,240/256),EqualChance=rgb(.5,.5,.5)),name = "") + 
   ylab("Average Prediction Error")+xlab("") + 
-  theme(legend.position='none') + coord_cartesian(ylim=c(0,0.5))
+  theme(legend.position='none') + coord_cartesian(ylim=c(-.025,0.525))
   
 barF <- ggplot(subset(bar.df,site!='EqualChance')) +
   geom_bar(aes(x=site,y=miss,fill=site),stat='identity') +
   scale_fill_manual(values=c(FiveThirtyEight=rgb(1,0,0),VividNumeral=rgb(0,120/256,240/256),EqualChance=rgb(.5,.5,.5)),name = "") + 
   ylab("Average Prediction Error")+xlab("") + 
-  theme(legend.position='none') + coord_cartesian(ylim=c(0,0.5)) + 
+  theme(legend.position='none') + 
   coord_cartesian(ylim=c(0.416125,0.41626)) + theme(axis.ticks = element_blank(), axis.text.y = element_blank())
 
 png(file="images/wc_group_bar_false.png",bg="transparent",family="helvetica",width=240,height=320,res=80)
