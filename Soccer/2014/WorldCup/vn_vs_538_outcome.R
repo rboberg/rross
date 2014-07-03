@@ -51,6 +51,11 @@ ggplot(team.df) +
   xlab("Absolute Miss")
 
 
+#clean up some team names
+team.df$team[team.df$team=='Bosnia and Herzegovina'] <- 'Bosnia'
+team.df$team[team.df$team=='Korea Republic'] <- 'Korea'
+team.df$team[team.df$team=='United States'] <- 'USA'
+
 plot.df <- data.frame(
   team = c(team.df$team,team.df$team),
   site = rep(c("VN","538"),each=nrow(team.df)),
@@ -59,13 +64,54 @@ plot.df <- data.frame(
 
 plot.df$team <- factor(plot.df$team,levels=with(team.df,team[order((abs(adv - prob_538) + abs(adv - prob_vn))/2)]))
 plot.df$bigger <- sapply(1:nrow(plot.df),function(i){subset(plot.df,team==plot.df$team[i])$site[order(-subset(plot.df,team==plot.df$team[i])$miss)[1]]})
-
-ggplot(plot.df,aes(x=team,y=miss,fill=site)) + geom_bar(stat='identity',position="dodge") + coord_flip()
-
-ggplot(plot.df,aes(x=team,y=miss)) +
-  geom_line(aes(group=team,color=bigger),size=1) +
-  geom_point(aes(color=site),size=4) +
-  coord_flip()
+plot.df$better <- sapply(1:nrow(plot.df),function(i){subset(plot.df,team==plot.df$team[i])$site[order(subset(plot.df,team==plot.df$team[i])$miss)[1]]})
 
 
-with(plot.df,apply(1)
+
+#ggplot(plot.df,aes(x=team,y=miss,fill=site)) + geom_bar(stat='identity',position="dodge") + coord_flip()
+
+gp <- ggplot(plot.df,aes(x=team,y=miss)) +
+        geom_line(aes(group=team,color=better),size=1) +
+        geom_point(aes(color=site),size=4) +
+        scale_color_manual(values=c(rgb(1,0,0),rgb(0,120/256,240/256)),name = "") +
+        coord_flip() +
+        ylab("") + xlab('') +
+        theme(legend.position = 'top')
+
+png(file="images/group_stage_outcome.png",bg="transparent",family="helvetica",width=400,height=1200,res=120)
+gp
+dev.off()
+
+
+##################
+
+bar.df <- data.frame(
+            miss =
+              c(
+                with(team.df, mean(abs(adv - prob_538))),
+                with(team.df, mean(abs(adv - prob_vn))),
+                0.5
+                ),
+            site=c('FiveThirtyEight','VividNumeral', 'EqualChance')
+            )
+
+barT <- ggplot(bar.df) +
+  geom_bar(aes(x=site,y=miss,fill=site),stat='identity') +
+  scale_fill_manual(values=c(FiveThirtyEight=rgb(1,0,0),VividNumeral=rgb(0,120/256,240/256),EqualChance=rgb(.5,.5,.5)),name = "") + 
+  ylab("Average Prediction Error")+xlab("") + 
+  theme(legend.position='none') + coord_cartesian(ylim=c(0,0.5))
+  
+barF <- ggplot(subset(bar.df,site!='EqualChance')) +
+  geom_bar(aes(x=site,y=miss,fill=site),stat='identity') +
+  scale_fill_manual(values=c(FiveThirtyEight=rgb(1,0,0),VividNumeral=rgb(0,120/256,240/256),EqualChance=rgb(.5,.5,.5)),name = "") + 
+  ylab("Average Prediction Error")+xlab("") + 
+  theme(legend.position='none') + coord_cartesian(ylim=c(0,0.5)) + 
+  coord_cartesian(ylim=c(0.416125,0.41626)) + theme(axis.ticks = element_blank(), axis.text.y = element_blank())
+
+png(file="images/wc_group_bar_false.png",bg="transparent",family="helvetica",width=240,height=320,res=80)
+barF
+dev.off()
+png(file="images/wc_group_bar_true.png",bg="transparent",family="helvetica",width=304,height=320,res=80)
+barT
+dev.off()
+
