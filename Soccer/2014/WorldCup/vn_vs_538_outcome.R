@@ -2,6 +2,7 @@
 ## This script analyzes world cup predictions vs outcomes
 library(MASS)
 library(ggplot2)
+library(grid)
 
 ###########################
 ##TO RUN: Set working Directory to the Location of the Project
@@ -77,10 +78,13 @@ gp <- ggplot(plot.df,aes(x=team,y=miss)) +
         coord_flip() +
         ylab("") + xlab('') +
         theme(legend.position = 'top')
+gp
 
 png(file="images/group_stage_outcome.png",bg="transparent",family="helvetica",width=400,height=1200,res=120)
-gp
+gp + theme(plot.margin=unit(c(0,1,0,0),"mm"))
 dev.off()
+
+ggsave(file="images/group_stage_outcome_ggsave.png",plot=gp,width=4,height=9)
 
 
 ##################
@@ -127,3 +131,4 @@ png(file="images/wc_group_bar_true.png",bg="transparent",family="helvetica",widt
 barT
 dev.off()
 
+bar.df$miss[2] - bar.df$miss[1]
