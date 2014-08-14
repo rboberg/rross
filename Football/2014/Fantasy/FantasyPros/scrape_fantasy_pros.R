@@ -102,6 +102,7 @@ getProjections <- function(pullPos){
   return(cleanDF)
 }
 
+
 getADP <- function(adpURL = "http://www.fantasypros.com/nfl/adp/overall.php"){
   
   # parse the URL
@@ -161,26 +162,33 @@ getADP <- function(adpURL = "http://www.fantasypros.com/nfl/adp/overall.php"){
   
 #######################################
 
+# Get projections for each position
 rbDF <- getProjections('RB')
 qbDF <- getProjections('QB')
 wrDF <- getProjections('WR')
 teDF <- getProjections('TE')
 
+
+# Merge predictions in to a single data.frame
 allDF <- merge(rbDF,qbDF,all=T)
 allDF <- merge(allDF,wrDF,all=T)
 allDF <- merge(allDF,teDF,all=T)
 
+# Get ADP data
 adpDF <- getADP()
 
+# Merge ADP data in to spreadsheet
 allDF <- merge(allDF,adpDF,all=T)
 
+# Rename rows
 row.names(allDF) <- paste(allDF$Player,allDF$POS)
 
-ggplot(allDF,aes(x=ESPN.ADP,y=AVG.ADP)) + geom_point()
+# Rename columns
+allDF <- rename(
+            allDF,
+            c('FL.MISC' = 'FL',
+              'FPTS.MISC' = 'FPTS'
+              )
+            )
 
-lm1 <- lm(ESPN.ADP ~ AVG.ADP, allDF)
-
-plot(lm1)
-
-
-allDF[order(-(allDF$ESPN.ADP / allDF$AVG.ADP)),c('Player','ESPN.ADP','AVG.ADP')]
+write.csv(allDF,"fpro2014.csv")

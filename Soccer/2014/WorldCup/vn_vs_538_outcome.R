@@ -34,11 +34,23 @@ advance <- c(
 
 team.df$adv = team.df$team %in% advance
 
-glm538 <- glm(adv~prob_538,data=team.df,family=binomial)
-glmvn <- glm(adv~prob_vn,data=team.df,family=binomial)
+
+#Statistical Tests
+glm538 <- glm(adv~prob_538,data=team.df,family=binomial())
+glmvn <- glm(adv~prob_vn,data=team.df,family=binomial())
 
 summary(glm538)
 summary(glmvn)
+exp(glm538$coef)
+exp(glmvn$coef)
+anova(glm538,test='Chisq')
+anova(glmvn,test='Chisq')
+
+team.df$diff = team.df$prob_vn - team.df$prob_538
+glm.diff <- glm(adv~diff,data=team.df,family=binomial())
+summary(glm.diff)
+
+#Charts
 
 ggplot(team.df) + geom_boxplot(aes(x=adv,y=prob_vn),col='blue',fill=NA) + geom_boxplot(aes(x=adv,y=prob_538),col='red',fill=NA)
 
