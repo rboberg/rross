@@ -56,7 +56,7 @@ draft.sim <- function(
   bench.mult,
   n.picks = 144,
   n.iter = 1000,
-  start.team = 2,
+  start.team = 1,
   snake = T,
   fwd = T,
   adp.wt = 0.8,
