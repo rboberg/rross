@@ -49,6 +49,8 @@ anova(glmvn,test='Chisq')
 team.df$diff = team.df$prob_vn - team.df$prob_538
 glm.diff <- glm(adv~diff,data=team.df,family=binomial())
 summary(glm.diff)
+exp(glm.diff$coef)
+
 
 #Charts
 
@@ -144,3 +146,99 @@ barT
 dev.off()
 
 bar.df$miss[2] - bar.df$miss[1]
+
+
+### Investigate scoring functions
+
+#exponential mean log-likelihood (logarithmic scoring)
+with(team.df, exp(mean(adv*log(prob_vn)+(1-adv)*log(1-prob_vn))))
+with(team.df, exp(mean(adv*log(prob_538)+(1-adv)*log(1-prob_538))))
+with(team.df, mean(adv*log(prob_538)+(1-adv)*log(1-prob_538)))
+with(team.df, mean(adv*log(prob_vn)+(1-adv)*log(1-prob_vn)))
+with(team.df, exp(mean(adv*log(adv*0.99+0.01*0.5)+(1-adv)*log(1-(adv*0.99+0.01*0.5)))))
+with(team.df, exp(mean(adv*log(0.5)+(1-adv)*log(1-0.5))))
+
+#to give intuition to levels
+exp(1*log(0.55))
+exp(1*log(0.53))
+
+# why the old one was a bad rule
+
+# If the truth is that a team advances 90% of the time
+# and I guess 90%. My average absolute error
+# will be 10% 90% of the time (when the team does win)
+# and 90% 10% of the time (when the team doesn't)
+# The average absolute errror will be 18% (0.9*0.1 + 0.1*0.9).
+
+# What if I guessed 100%? Then my error would be 0%
+# 90% of the time (when the team won) and 100% 10%
+# of the time (when the team lost). The average aboslute
+# error will be 10% (0 * 0.9 + 1 * 0.1).
+
+# My mean absolute error did not yield the best score when the probability
+# was guessed correctly. That's a big problem.
+# In terms of decision theory, my scoring rule was not "proper"
+# (wikipedia link). In trying to doing something more intuitive
+# and easier to interpret, I mistakenly sacrificed accuracy. 
+
+# So what is a proper scoring rule? 
+
+# create function for log scoring rule
+llfunc <- function(guess, actual){
+  actual*log(guess) + (1-actual)*log(1-guess) 
+}
+
+# create funciton for the dumb scoring rule I made last time
+dumfunc <- function(guess, actual){
+  abs(1-guess)*(1-actual) + abs(0-guess)*(actual)
+}
+
+# different guesses
+guesses <- (1:99)/100
+
+# different actual states
+actuals <- c(0.2,0.5,0.8)
+
+# create scores for different scores and actuals using log score
+score.df <- data.frame(
+              forecast = rep(guesses,length(actuals)),
+              exp.score = mapply(llfunc,guess=rep(guesses,length(actuals)),actual=rep(actuals,each=length(guesses))),
+              truth = rep(actuals,each=length(guesses))
+              )
+
+ggplot(score.df, aes(x=forecast,y=exp.score,col=factor(truth))) + geom_line()
+
+
+# create scores for different scores and actuals using dumb score
+
+dum.df <- data.frame(
+              forecast = rep(guesses,length(actuals)),
+              exp.score = mapply(dumfunc,guess=rep(guesses,length(actuals)),actual=rep(actuals,each=length(guesses))),
+              truth = rep(actuals,each=length(guesses))
+              )
+
+ggplot(dum.df, aes(x=forecast,y=exp.score,col=factor(truth))) + geom_line()
+
+# combine the score data frames
+
+combo.df <- rbind(transform(score.df,Type='Log Score',exp.score=exp(exp.score)),transform(dum.df,Type='Difference Score'))
+
+xbreaks <- c(0:4)/4 # set breaks for the below
+
+# make chart of the combo df
+score.comp <- ggplot(
+  transform(combo.df, truth=factor(truth,labels=paste0("Real Probability = ",c('20%','50%','80%')))),
+       aes(x=forecast,y=exp.score,col=Type)
+  ) +
+  geom_line() +
+  facet_grid(~truth) +
+  ylab("Expected Score (Higher = Better)") +
+  xlab("Forecasted Probability %") + 
+  scale_x_continuous(breaks=xbreaks,labels=paste0(round(xbreaks*100))) + 
+  theme(legend.position="top")
+score.comp
+
+png(file="images/score_algo_comp.png",bg="transparent",family="helvetica",width=600,height=300,res=75)
+score.comp
+dev.off()
+

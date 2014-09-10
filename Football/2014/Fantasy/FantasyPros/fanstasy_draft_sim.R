@@ -1,7 +1,8 @@
 ###########################
-##TO RUN: Set working Directory to the Location of the Project
+## TO RUN: Set working Directory to the Location of the Project
 HOMEDIR <- "F:/Docs/Personal/rross"
 #HOMEDIR <- "C:/Users/Ross/Documents/R/rross"
+
 setwd(paste0(HOMEDIR,"/Football/2014/Fantasy/FantasyPros"))
 
 
@@ -64,6 +65,7 @@ draft.sim <- function(
   ){
   
   iterDF <- data.frame(c())
+  bestDF <- data.frame(c())
   
   for(i in 1:n.iter){
     
@@ -94,11 +96,14 @@ draft.sim <- function(
       }else {
         team.j <- (team.j %% ncol(teams.j)) + 1
       }
+      #bestDF <- rbind(bestDF,data.frame(iter=i,pick=j,aggregate(FPTS~POS,loopDF,max)))
     }
     #draftDF[order(draftDF$team,draftDF$POS),]
+
     
     iterDF <- rbind(iterDF,transform(draftDF,iter=i))
   }
+  #return(list(iterDF,bestDF))
   return(iterDF)
 }
 
@@ -147,13 +152,35 @@ expectedMax <- function(iterDF){
   return(list(maxAr = maxAr, maxDF = maxDF))
 }
 
+#######################
+### This function takes teams, who is picking, and rounds
+### returns the picks that that person gets
+whichPicks <- function(who, nteam=12, rounds=12){
+  picks <- c(who)
+  gaps <- rep(c(who*2 - 1, (nteam - who)*2+1), rounds)
+  for(i in 2:rounds){
+    picks <- c(picks, picks[i-1] + gaps[i]) 
+  }
+  return(picks)
+}
 
+whichPicks(12)
 
 ######################
 #####################
 
 # Load CSV
 allDF <- read.csv('fpro2014.csv', row.names = 1, stringsAsFactors = F)
+
+################
+## ADD ANY SPECIAL SCORING FPTS MEASURES YOU WANT TO USE
+###############
+allDF <- transform(allDF, FPTS.HPPR = FPTS + ifelse(is.na(REC.RECEIVING),0,REC.RECEIVING)*0.5)
+
+
+###################
+## SET UP SIMULATION
+#################
 
 # Number of Teams in Simulation
 nteam <- 12
@@ -164,6 +191,48 @@ pos.name <- c('QB','RB','WR','TE')
 # Roster specifications
 pos.start <- c(1,2.5,2.5,1)
 pos.bench <- c(.5,2.5,2.5,.5)
+
+#Calculate points over replacement
+pos.total <- (pos.start+pos.bench)*nteam
+point.names <- c('FPTS','FPTS.HPPR')
+por.names <- c('POR','POR.HPPR')
+pob.names <- c('POB','POB.HPPR')
+
+for(i in 1:length(point.names)){
+  point.var <- point.names[i]
+  por.var <- por.names[i]
+  pob.var <- pob.names[i]
+  allDF[,por.var] <- 0
+  allDF[,pob.var] <- 0
+  
+  for(j in 1:length(pos.name)){
+    which.row <- allDF$POS == pos.name[j]
+    pos.max <- min(pos.total[j] + 2, sum(which.row))
+    repval <- -mean(sort(-allDF[which.row,point.var])[(pos.max-4):(pos.max)])
+    allDF[which.row, por.var] <- allDF[which.row, point.var] - repval
+    
+    bench.max <- min(pos.start[j]*nteam + 2, sum(which.row))
+    benchval <- -mean(sort(-allDF[which.row,point.var])[(bench.max-4):(bench.max)])
+    allDF[which.row, pob.var] <- allDF[which.row, point.var] - benchval
+  }
+}
+
+allDF$POR.RANK.HPPR <- rank(-allDF$POR.HPPR)
+allDF$POB.RANK.HPPR <- rank(-allDF$POB.HPPR)
+allDF$POR.RANK <- rank(-allDF$POR)
+allDF$POB.RANK <- rank(-allDF$POB)
+
+allDF[order((allDF$POR.RANK.HPPR + allDF$POB.RANK.HPPR)/2),c('ESPN.ADP','FPTS.HPPR','POR.HPPR','POB.HPPR', 'POR.RANK.HPPR', 'POB.RANK.HPPR')]
+allDF[order(-(allDF$POR.HPPR)/2),c('ESPN.ADP','FPTS.HPPR','POR.HPPR','POB.HPPR')]
+
+subset(allDF[order(-(allDF$POR.HPPR)/2),], POS=='WR')[,c('ESPN.ADP','FPTS.HPPR','POR.HPPR','POB.HPPR')]
+
+standard.ranks <- allDF[order((allDF$POR.RANK+ allDF$POB.RANK)/2),c('ESPN.ADP','FPTS','POR','POB', 'POR.RANK', 'POB.RANK')]
+transform(standard.ranks, rank.order = 1:nrow(standard.ranks))
+
+hppr.ranks <- allDF[order((allDF$POR.RANK+ allDF$POB.RANK)/2),c('ESPN.ADP','FPTS.HPPR','POR.HPPR','POB.HPPR', 'POR.RANK.HPPR', 'POB.RANK.HPPR')]
+transform(hppr.ranks, rank.order = 1:nrow(hppr.ranks))
+#allDF[order(-(allDF$POR)/2),c('ESPN.ADP','FPTS','POR','POB')]
 
 # Coefficients for weighting starters vs bench in draft decisions
 start.mult <- 1
@@ -260,9 +329,54 @@ valueDF$value <- apply(valueDF[,pos.name],1,function(x){sum(x[order(-x)]*c(0.75,
 pickValue <- aggregate(value ~ team, data = valueDF, FUN = sum)
 pickValue$plusMinus <- pickValue$value-mean(pickValue$value)
 
+######################
+## Look at best players available
+
+#FPT MEASURE
+fptsMeasure <- 'FPTS.HPPR'
+#make sure fpts measure is in the data frame
+iterDF[,fptsMeasure] <- allDF[match(iterDF$Player, allDF$Player),fptsMeasure]
+
+iterDT <- data.table(transform(iterDF,iter=as.character(iter)),key=c('iter','pick','Player'))
+tempDF <- allDF
+tempDF$rank <- rank(-tempDF[,fptsMeasure])
+playerDT <- data.table(tempDF,key=c('POS','rank'))
+
+bestDT <- array(NA, c(4,max(iterDT$pick),max(iterDT$iter)),dimnames=list(c('QB','RB','WR','TE')))
+bestDT['QB',1,] <- mean(playerDT['QB'][1:3][,get(fptsMeasure)])
+bestDT['RB',1,] <- mean(playerDT['RB'][1:3][,get(fptsMeasure)])
+bestDT['WR',1,] <- mean(playerDT['WR'][1:3][,get(fptsMeasure)])
+bestDT['TE',1,] <- mean(playerDT['TE'][1:3][,get(fptsMeasure)])
+
+for(i in 1:max(iterDT$iter)){
+  system.time({
+  loopDraft <- iterDT[as.character(i)]
+  loopPlayer <- playerDT
+  
+  for(j in 2:nrow(loopDraft)){
+    bestDT[,j,i] <- bestDT[,j-1,i]
+    pj <- loopDraft[j]
+    loopPlayer <- loopPlayer[Player != pj$Player]
+    bestDT[pj$POS,j,i] <- mean(loopPlayer[pj$POS][1:3][,get(fptsMeasure)])
+  }
+  })
+}
+
+apply(bestDT[,12,] - bestDT[,36,], 1, quantile, probs=c(0.1,0.9), na.rm=T)
+
+temp <- transform(melt(bestDT[,12,] - bestDT[,36,], varnames=c("POS","ITER")),Diff="12-36")
+temp <- rbind(temp, transform(melt(bestDT[,36,] - bestDT[,60,], varnames=c("POS","ITER")), Diff="36-60"))
+temp <- rbind(temp, transform(melt(bestDT[,60,] - bestDT[,84,], varnames=c("POS","ITER")), Diff="60-84"))
+temp <- rbind(temp, transform(melt(bestDT[,84,] - bestDT[,106,], varnames=c("POS","ITER")), Diff="84-106"))
+ggplot(temp,aes(x=POS,y=value)) + geom_boxplot() + facet_wrap(~Diff)
 
 ################
 ## Look at simulated rosters
+
+#FPT MEASURE
+fptsMeasure <- 'FPTS.HPPR'
+#make sure fpts measure is in the data frame
+iterDF[,fptsMeasure] <- allDF[match(iterDF$Player, allDF$Player),fptsMeasure]
 
 rosters <- data.frame(c())
 points <- data.frame(c())
@@ -270,7 +384,7 @@ points <- data.frame(c())
 for(i in 1:max(iterDF$iter)){
   for(j in 1:max(iterDF$team)){
     allpicks <- subset(iterDF, iter==i & team==j)
-    allpicks.order <- allpicks[order(-allpicks$FPTS),]
+    allpicks.order <- allpicks[order(-allpicks[,fptsMeasure]),]
     roster.ij <- data.frame(
                     QB = allpicks.order$Player[allpicks.order$POS=='QB'][1],
                     RB1 = allpicks.order$Player[allpicks.order$POS=='RB'][1],
@@ -296,7 +410,7 @@ for(i in 1:max(iterDF$iter)){
       ][1]
     
     points.ij <- roster.ij
-    points.ij[1,] <- allpicks$FPTS[match(roster.ij,allpicks$Player)]
+    points.ij[1,] <- allpicks[match(roster.ij,allpicks$Player),fptsMeasure]
     
     rosters <- rbind(rosters, transform(roster.ij,iter=i,team=j))
     points <- rbind(points, transform(points.ij,iter=i,team=j))
@@ -318,7 +432,7 @@ pmSummary$Total <- apply(pmSummary[,list(QB,RB1,RB2,WR1,WR2,FLEX,BENCH1,BENCH2)]
 
 pmSummary
 
-#Get the most probably players at each position
+#Get the most probable players at each position for each drafter
 teamList <- list()
 for(i in 1:max(rosters$team)){
   subros <- subset(rosters,team==i)
@@ -398,6 +512,14 @@ bwDF <- melt(bwDiff,id.var='pick',variable.name='POS')
 ggplot(bwDF,aes(x=pick,y=value,color=POS)) + geom_line(alpha=0.2) + geom_smooth(method="loess",span=0.2,se=F)
 
 
+subbwDF <- subset(bwDF,pick %in% c(whichPicks(12,12,12), whichPicks(11,12,12)))
+subbwDF$Group <- floor(subbwDF$pick/24)
+ggplot(subbwDF,aes(x=pick,y=value,color=POS)) + geom_line()
+acast(subbwDF,pick~POS)
+
+acast(aggregate(value~Group+POS,subbwDF,mean),Group~POS)
+
+
 aggregate(Total~team,pmDT,FUN=quantile)
 
 #Diff between AP and SJ = 95
@@ -411,5 +533,41 @@ transform(subset(allDF[order(-allDF$FPTS),],POS=='TE'),rank = order(-FPTS))
 #Diff between JG and MB = 95
 #JG drafted 10 overall, MB drafted 133 ESPN, 131 on average
 transform(subset(allDF[order(-allDF$FPTS),],POS=='WR'),rank = order(-FPTS))
+
+
+################################
+################################
+# Check Player availability at each pick
+niter <- max(iterDT$iter)
+pickFreq <- table(iterDT$Player, iterDT$pick)
+pickFreq <- cbind(0,pickFreq[,-dim(pickFreq)[2]])
+dimnames(pickFreq)[[2]] <- 1:ncol(pickFreq)
+pickProb <- 1-(t(apply(pickFreq,1,cumsum)) / niter)
+probs <- c(0.1,1)
+
+pointSuffix <- ''
+pointSuffix <- '.HPPR'
+pointMeasure <- paste0('FPTS',pointSuffix)
+
+pick <- 24
+picks <- iterDT[team==1 & iter==1][order(pick)]$pick
+#picks <- 1:max(iterDF$pick)
+picks <- whichPicks(1, 12, 12)
+
+pickList <- list()
+for(i in 1:length(picks)){
+    pick <- picks[i]
+    subDF <- subset(allDF, Player %in% row.names(pickProb))
+    subDF$PROB <- pickProb[subDF$Player,pick]
+    if(pick == 1){
+      subDF$PROB2 <- pickProb[subDF$Player,pick+1]
+      subDF <- subset(subDF, PROB2 > probs[1]  & PROB2 < probs[2])
+    } else{
+      subDF <- subset(subDF, PROB > probs[1]  & PROB < probs[2])
+    }
+    pickList[[paste0('Pick:',pick)]] <- by(subDF[,c(pointMeasure,paste0('POR',pointSuffix),paste0('POB',pointSuffix),'PROB','ESPN.ADP')],subDF$POS,function(x){x[order(-x$FPTS),]})
+}
+
+pickList  
 
 save.image()
