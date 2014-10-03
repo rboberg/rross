@@ -171,3 +171,39 @@ ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xin
 
 #############################
 ### (4) Problem 3.11
+
+# Not sure what to do  here yet
+
+
+#############################
+### (5) iPhones
+
+N = 1000000
+p1 = .007
+p2 = .005
+
+### (b)
+
+n1 = N*.5
+n2 = N*.5
+
+calc_ci <- function(p1,p2,n1,n2){
+  x1 = p1*n1
+  x2 = p2*n2
+  xbar = p1-p2
+  p = (x1+x2)/(n1+n2)
+  se = sqrt(p*(1-p)*(1/n1 + 1/n2))
+  ci = c(xbar - se*1.96, xbar + se*1.96)
+  return(ci)
+}
+
+ci1 <- calc_ci(p1,p2,n1,n2)
+ci1
+
+### (d)
+
+n1 = 0.99*N
+n2 = 0.01*N
+ci2 <- calc_ci(p1,p2,n1,n2)
+
+ci2[2] - ci2[1]
