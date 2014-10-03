@@ -168,11 +168,40 @@ sum(rand_ate > abs(block_ate)) / iter
 
 ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xint=block_ate, col='blue')
 
+# Histograms
+ggplot(p38_df, aes(x=bills)) + geom_histogram(binwidth=10) + facet_wrap(~group)
+
 
 #############################
 ### (4) Problem 3.11
 
-# Not sure what to do  here yet
+# calculate cluster standard errors
+
+calc_cluster_se <-function(y0,y1,m,cluster){
+  k <- length(unique(cluster))
+  N <- length(y0)
+    
+  cluster_means <- aggregate(data.frame(y0=y0, y1=y1),list(cluster=cluster),mean)
+  
+  # R uses n-1 to calculate variance
+  # but we are computing actual variance, not estimating
+  # so want to adjust the values
+  sigma <- cov(cluster_means[,c('y0','y1')]) * k / (k-1)
+  
+  return(sqrt(1/(k-1)*(m/(N-m)*sigma[1,1] + (N-m)/m*sigma[2,2]) + 2*sigma[1,2]))
+
+}
+
+y0 <- c(0,1,2,4,4,6,6,9,14,15,16,16,17,18)
+y1 <- c(0,0,1,2,0,0,2,3,12,9,8,15,5,17)
+
+# (a)
+cluster <- rep(1:7,each=2)
+calc_cluster_se(y0,y1,m=3*2,cluster=cluster)
+
+# (b)
+cluster <- c(1:7,7:1)
+calc_cluster_se(y0,y1,m=3*2,cluster=cluster)
 
 
 #############################
