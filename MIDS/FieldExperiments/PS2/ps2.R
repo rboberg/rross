@@ -1,5 +1,5 @@
-#setwd("C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS2")
-setwd("F:/Docs/Personal/rross/MIDS/FieldExperiments/PS2")
+setwd("C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS2")
+#setwd("F:/Docs/Personal/rross/MIDS/FieldExperiments/PS2")
 library(ggplot2)
 
 ###########################
@@ -9,9 +9,9 @@ assign_treat <- function(n0, n1){
   return(sample(c(rep(0,n0),rep(1,n1))))
 }
 
-run_sim <- function(subjects, n0, n1){
+run_sim <- function(subjects, n0, n1, true_ate = 0){
   assign <- assign_treat(n0, n1)
-  ate <- mean(subjects[assign==1]) - mean(subjects[assign==0])
+  ate <- mean(subjects[assign==1] + true_ate) - mean(subjects[assign==0])
   return(ate)
 }
 
@@ -236,3 +236,37 @@ n2 = 0.01*N
 ci2 <- calc_ci(p1,p2,n1,n2)
 
 ci2[2] - ci2[1]
+
+
+#############################
+### (6) Auction
+
+auction_df <- read.csv('list_luckingreiley_auction_data.csv')
+
+# treatment = theoretically lower bids
+
+est_ate <- with(auction_df, calc_est_ate(uniform_price_auction, bid))
+est_se <- with(auction_df, calc_est_se(uniform_price_auction, bid))
+# could also have used regression to calculate these
+reg_summary <- summary(lm(bid~uniform_price_auction, auction_df))
+
+ci <- est_ate + 1.96*est_se*c(-1, 1)
+
+# p-value with regression
+p_reg <- reg_summary$coef[2,4]
+
+# p-value with randomization inference
+n0 <- sum(auction_df$uniform_price_auction==0)
+n1 <- sum(auction_df$uniform_price_auction==1)
+
+iter <- 10000
+rand_ate <- replicate(iter, run_sim(auction_df$bid, n0, n1))
+
+p_rand <- sum(abs(rand_ate) > abs(est_ate)) / iter
+
+p_reg
+p_rand
+
+# not much different, (usually the case for samples > 50)
+# if the sample size was smaller then we could start to see
+# bigger differences
