@@ -6,7 +6,6 @@
 
 ####################
 ### Functions & Libraries
-library(lmtest)
 
 #Function to compute clustered standard errors in R
 cl <- function(dat, fm, cluster){
@@ -24,7 +23,8 @@ cl <- function(dat, fm, cluster){
 
 
 # set wd
-setwd('F:/Docs/Personal/rross/MIDS/FieldExperiments/PS3')
+#setwd('F:/Docs/Personal/rross/MIDS/FieldExperiments/PS3')
+setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS3')
 
 #####################
 ### Problem 2
@@ -54,3 +54,19 @@ cl_dif_treat = cl_minmax[cl_minmax$treat_ad[,'min'] != cl_minmax$treat_ad[,'max'
 nrow(cl_dif_treat)
 
 ### d) 
+
+cl(fb_sub1, fb_lm1, fb_sub1$cluster)
+dat = fb_sub1
+fm = fb_lm1
+cluster = fb_sub1$cluster
+
+require(sandwich, quietly = TRUE)
+require(lmtest, quietly = TRUE)
+M <- length(unique(cluster))
+N <- length(cluster)
+K <- fm$rank
+dfc <- (M/(M-1))*((N-1)/(N-K))
+uj <- apply(estfun(fm),2, function(x) tapply(x, cluster, sum))
+vcovCL <- dfc*sandwich(fm, meat=crossprod(uj)/N)
+coeftest(fm, vcovCL)
+
