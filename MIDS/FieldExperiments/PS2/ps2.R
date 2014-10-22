@@ -9,9 +9,9 @@ assign_treat <- function(n0, n1){
   return(sample(c(rep(0,n0),rep(1,n1))))
 }
 
-run_sim <- function(subjects, n0, n1, true_ate = 0){
+run_sim <- function(subjects, n0, n1){
   assign <- assign_treat(n0, n1)
-  ate <- mean(subjects[assign==1] + true_ate) - mean(subjects[assign==0])
+  ate <- mean(subjects[assign==1]) - mean(subjects[assign==0])
   return(ate)
 }
 
@@ -32,9 +32,12 @@ calc_est_ate <- function(group, outcome){
 #########################
 ### (1) Problem 3.6
 
+# read & organize a csv created from the book
 p36_df <- read.csv('ex3_6_data.csv')
 n <- c(448,510)
 p36_df <- transform(p36_df, y0 = round(y0/sum(y0)*n[1]), y1 = round(y1/sum(y1)*n[2]))
+
+# estimate ate
 est_ate <- with(p36_df, sum((y1/sum(y1) - y0/sum(y0))*rating))
 
 p36_df$all <- p36_df$y0 + p36_df$y1
@@ -42,7 +45,7 @@ p36_df$all <- p36_df$y0 + p36_df$y1
 subjects <- with(p36_df, rep(rating, all))
 
 iter = 10000
-rand_ate <- replicate(10000, run_sim(subjects, n[1], n[2]))
+rand_ate <- replicate(iter, run_sim(subjects, n[1], n[2]))
 
 # how many bigger?
 n_bigger = sum(rand_ate >= est_ate)
@@ -58,7 +61,7 @@ n_bigger_abs
 # two-tailed p-value estimate
 n_bigger_abs/iter
 
-ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xint=est_ate, col='blue')
+#ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xint=est_ate, col='blue')
 
 
 #############################
@@ -87,10 +90,10 @@ all_possible <- function(subjects, n1){
     )
 }
 
-#all_possible(c(y0,y1), length(y1))
-sum(all_possible(c(y0,y1-7), length(y1)) >= mean(y1-7) - mean (y0))
+all_rand <- all_possible(c(y0,y1-7), length(y1))
+sum(all_rand >= mean(y1-7) - mean (y0)) / length(all_rand)
 
-# ???? Use a one-sided test because we have a specific hypothesis
+# Use a one-sided test because we have a specific hypothesis
 # that weight loss will be positive not just a change in direction
 
 
@@ -104,16 +107,21 @@ sum(all_possible(c(y0,y1-7), length(y1)) >= mean(y1-7) - mean (y0))
 
 p38_df <- read.csv('ex3_8_data.csv')
 
+# (a)
 est_ate <- c(
   ar = with(subset(p38_df, st == 'ar'), calc_est_ate(group, bills)),
   tx = with(subset(p38_df, st == 'tx'), calc_est_ate(group, bills))
   )
+est_ate
 
+# (b)
 est_se <- c(
   ar = with(subset(p38_df, st == 'ar'), calc_est_se(group, bills)),
   tx = with(subset(p38_df, st == 'tx'), calc_est_se(group, bills))
   )
+est_se
 
+# (c)
 n_st <- c(
   ar=sum(p38_df$st == 'ar'),
   tx=sum(p38_df$st == 'tx')
@@ -124,7 +132,9 @@ calc_block_ate <- function(ates, ns){
 }
 
 block_ate <- calc_block_ate(est_ate, n_st)
+block_ate
 
+# (d)
 # Why just pooling would be biased?
 # Equal numbers of control in each group
 # but more treatment in Arkansas. Because AR senators
@@ -132,11 +142,14 @@ block_ate <- calc_block_ate(est_ate, n_st)
 # bills introduced by the treatment group lower and
 # exagerate the negative treatment effect.
 
+#(e)
 total_ate_se <- sqrt(
   est_se['ar']^2 * n_st['ar'] / nrow(p38_df) + 
     est_se['tx']^2 * n_st['tx'] / nrow(p38_df)
   )
+unname(total_ate_se)
 
+# (f)
 # Randomization Inference w/ blocking?
 # Need to randomize by block!
 
@@ -166,10 +179,10 @@ iter = 10000
 rand_ate <- replicate(iter, run_block_sim(block, group, outcome, n_bg))
 sum(rand_ate > abs(block_ate)) / iter
 
-ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xint=block_ate, col='blue')
+#ggplot(data.frame(ATE = rand_ate), aes(x=ATE)) + geom_density() + geom_vline(xint=block_ate, col='blue')
 
 # Histograms
-ggplot(p38_df, aes(x=bills)) + geom_histogram(binwidth=10) + facet_wrap(~group)
+ggplot(p38_df, aes(x=bills)) + geom_histogram(binwidth=10) + facet_wrap(st~group)
 
 
 #############################
@@ -213,9 +226,6 @@ p2 = .005
 
 ### (b)
 
-n1 = N*.5
-n2 = N*.5
-
 calc_ci <- function(p1,p2,n1,n2){
   x1 = p1*n1
   x2 = p2*n2
@@ -226,6 +236,10 @@ calc_ci <- function(p1,p2,n1,n2){
   return(ci)
 }
 
+
+n1 = N*.5
+n2 = N*.5
+
 ci1 <- calc_ci(p1,p2,n1,n2)
 ci1
 
@@ -234,7 +248,6 @@ ci1
 n1 = 0.99*N
 n2 = 0.01*N
 ci2 <- calc_ci(p1,p2,n1,n2)
-
 ci2[2] - ci2[1]
 
 
@@ -245,13 +258,17 @@ auction_df <- read.csv('list_luckingreiley_auction_data.csv')
 
 # treatment = theoretically lower bids
 
+# (a)
+
 est_ate <- with(auction_df, calc_est_ate(uniform_price_auction, bid))
 est_se <- with(auction_df, calc_est_se(uniform_price_auction, bid))
 # could also have used regression to calculate these
 reg_summary <- summary(lm(bid~uniform_price_auction, auction_df))
 
 ci <- est_ate + 1.96*est_se*c(-1, 1)
+ci
 
+# (b)
 # p-value with regression
 p_reg <- reg_summary$coef[2,4]
 
