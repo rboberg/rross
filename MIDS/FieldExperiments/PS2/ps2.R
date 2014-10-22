@@ -92,6 +92,7 @@ all_possible <- function(subjects, n1){
 
 all_rand <- all_possible(c(y0,y1-7), length(y1))
 sum(all_rand >= mean(y1-7) - mean (y0)) / length(all_rand)
+sum(all_rand >= mean(y1-7) - mean (y0)) / length(all_rand)
 
 # Use a one-sided test because we have a specific hypothesis
 # that weight loss will be positive not just a change in direction
