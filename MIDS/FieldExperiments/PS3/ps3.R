@@ -24,8 +24,8 @@ cl <- function(dat, fm, cluster){
 
 # set wd
 #setwd('F:/Docs/Personal/rross/MIDS/FieldExperiments/PS3')
-#setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS3')
-setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS3')
+setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS3')
+#setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS3')
 
 #####################
 ### Problem 2
@@ -96,5 +96,34 @@ fb_ci00_cl
 
 ### h) 
 
+# Check out recall and treatment by study
 aggregate(treat_ad ~ studyno, fb_df, mean)
 aggregate(name_recall ~ studyno, fb_df, mean)
+
+
+##########################
+# Problem 4 Ebola
+
+# load data
+ebola_df = read.csv('ebola_rct2.csv', stringsAsFactors=F)
+
+### a) No Covariates
+
+lma = lm(vomiting_day14 ~ treat_zmapp, ebola_df)
+summary(lma)
+
+### b) Initial Vomiting and Temperature
+
+lmb = lm(vomiting_day14 ~ treat_zmapp + vomiting_day0 + temperature_day0, ebola_df)
+summary(lmb)
+
+
+### d) Same as b) + control for day 14 temperature (bad control)
+
+lmd = lm(vomiting_day14 ~ treat_zmapp + vomiting_day0 + temperature_day0 + temperature_day14, ebola_df)
+summary(lmd)
+
+### f) Treatment by sex
+
+lmf = lm(vomiting_day14 ~ treat_zmapp * male + vomiting_day0 + temperature_day0 , ebola_df)
+summary(lmf)
