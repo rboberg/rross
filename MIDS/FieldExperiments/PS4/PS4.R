@@ -80,14 +80,18 @@ cace3.noleaflet
 
 ### f) CACE no effect on compliers
 
+# adjust turnout rate of noncompliers in the treatment group down by 3%
 turnout.f = aggregate(turnout ~ contact + treat2, data3, function(x){return(c(mean=mean(x),n=length(x)))})
 turnout.fadj = turnout.f
 turnout.fadj[turnout.fadj$contact==0 & turnout.fadj$treat2==1,3][1] <- turnout.f[turnout.f$contact==0 & turnout.f$treat2==1,3][1] - 0.03
 
+# calculate new ITT
 control.turnout.adj <- with(subset(turnout.fadj, treat2==1), sum(turnout[,'mean']*turnout[,'n'])/sum(turnout[,'n']))
 treatment.turnout <- with(subset(turnout.fadj, treat2==0), turnout[,'mean'])
 itt3f <- control.turnout.adj - treatment.turnout
 itt3f
+
+# calculate new CACE
 cace3f <- itt3f / compliance.rate
 cace3f
 
@@ -117,6 +121,7 @@ data4.expanded$turnout = unlist(mapply(
     return(c(rep(0,n-n1), rep(1,n1)))
   }, data4$n, data4$turnout))
 
+# test whther there is a different in treatment rates (compliance rates) for treatment vs placebo
 lm4a <- lm(treated ~ assigned, subset(data4.expanded, assigned != 'baseline'))
 summary(lm4a)
 
@@ -166,4 +171,16 @@ cace4d1
 
 # Method 2 is more accurate than method 1 with tighter standard errors and thus more statistical significance
 
+######### EXTRA: CHECKING STANDARD ERROR ASSUMPTION #####
 
+data4csub <- subset(data4.expanded, assigned != 'treatment')
+lm4c.step1 <- lm(treated ~ assigned,data4csub)
+lm4c.step2 <- lm(turnout ~ fitted.treated, transform(data4csub, fitted.treated=lm4c.step1$fitted.values))
+summary(lm4c.step2)
+
+data4dsub <- subset(data4.expanded, assigned != 'placebo')
+lm4d.step1 <- lm(treated ~ assigned, data4dsub)
+lm4d.step2 <- lm(turnout ~ fitted.treated, transform(data4dsub, fitted.treated=lm4d.step1$fitted.values))
+summary(lm4d.step2)
+        
+###### END EXTRA ########################################
