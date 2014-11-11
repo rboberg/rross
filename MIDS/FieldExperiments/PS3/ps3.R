@@ -24,8 +24,8 @@ cl <- function(dat, fm, cluster){
 
 # set wd
 #setwd('F:/Docs/Personal/rross/MIDS/FieldExperiments/PS3')
-setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS3')
-#setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS3')
+#setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS3')
+setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS3')
 
 #####################
 ### Problem 2
@@ -123,7 +123,7 @@ summary(lmb)
 lmd = lm(vomiting_day14 ~ treat_zmapp + vomiting_day0 + temperature_day0 + temperature_day14, ebola_df)
 summary(lmd)
 
-### f) Treatment by sex
+### f) Treatment of temperatures by sex
 
-lmf = lm(vomiting_day14 ~ treat_zmapp * male + vomiting_day0 + temperature_day0 , ebola_df)
+lmf = lm(temperature_day14 ~ treat_zmapp * male + vomiting_day0 + temperature_day0 , ebola_df)
 summary(lmf)
