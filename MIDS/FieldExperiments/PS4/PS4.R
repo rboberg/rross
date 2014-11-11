@@ -59,6 +59,8 @@ sum(itt3 < abs(itt3sim))
 
 # Regression w/ Clustered SE
 lm3b <- lm(turnout ~ treat2, data3)
+lm3b.clse <- cl(data3, lm3b, data3$dormid)
+lm3b.clse
 
 ### c) CACE estimate (ignoring leaflet)
 
