@@ -3,7 +3,7 @@
 # FIELD EXPERIMENTS
 # PROBLEM SET 4
 ####################
-
+library(ggplot2)
 library(foreign)
 
 ####################
@@ -222,3 +222,51 @@ y10_y00_8c <- with(
 y10_y00_8c
 
 
+################
+### Problem 9: FE 8.10
+
+data9 = read.dta('Hough_WorkingPaper_2010.dta')
+
+### b) effect of running on Tetris
+data9$run_yest = c(NA, data9$run[1:(nrow(data9)-1)])
+
+lm9b0 = lm(tetris ~ run, data9)
+summary(lm9b0)
+
+lm9b1 = lm(tetris ~ run_yest, data9)
+summary(lm9b1)
+
+lm9b2 = lm(tetris ~ run + run_yest, data9)
+summary(lm9b2)
+
+# Something else interesting...
+# I noticed that the scores were better at the end of the time
+# and figured that she was probably improving at tetris as she played.
+# So I thought "day" made sense to include as a covariate.
+# A regression with day indeed has higher R^2 (0.26 to 0.49) and increases the precision
+# of the "run" coefficient, lowering the standard error (4856 to 4290).
+# But the t-value acutally goes down a bit (2.80 to 2.39)
+# because the estimate dropped (she radnomly ran more at
+# the end of the study when her scores were better)
+
+lm9b0_day = lm(tetris ~ run + day, data9)
+summary(lm9b0_day)
+
+
+### c) effect of running tomorrow on Tetris
+data9$run_tom = c(data9$run[-1], NA)
+
+lm9c = lm(tetris ~ run_tom, data9)
+summary(lm9c)
+
+### d) effect of running on energy level & GRE
+
+lm9d_energy = lm(energy ~ run, data9)
+summary(lm9d_energy)
+
+lm9d_gre = lm(gre ~ run, data9)
+summary(lm9d_gre)
+
+
+### e) Tetris scores not normal....
+ggplot(data9, aes(x=tetris)) + geom_density()
