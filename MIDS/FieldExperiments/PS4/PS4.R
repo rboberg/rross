@@ -184,3 +184,41 @@ lm4d.step2 <- lm(turnout ~ fitted.treated, transform(data4dsub, fitted.treated=l
 summary(lm4d.step2)
         
 ###### END EXTRA ########################################
+
+
+#######################
+### Problem 8: FE 8.9
+
+# load data
+data8 <- read.csv("GerberGreenBook_Chapter8_Table_8_4_8_5.csv", stringsAsFactors = F)
+
+### a) No spillover hot spots
+data8a <- subset(data8, hotwitin500 == 0)
+
+# calculate y01 - y00
+# this calculation is overkill in this case b/c all probabilities are the same
+# but figured I would do it anyway.
+y01_y00_8a <- with(data8a, sum(y01 * 1/prob01)/sum(1/prob01) - sum(y00 * 1/prob00)/sum(1/prob00))
+y01_y00_8a
+
+
+### b) spillover hot spots
+data8b <- subset(data8, hotwitin500 > 0)
+y01_y00_8b <- with(data8b, sum(y01 * 1/prob01)/sum(1/prob01) - sum(y00 * 1/prob00)/sum(1/prob00))
+y10_y00_8b <- with(data8b, sum(y10 * 1/prob10)/sum(1/prob10) - sum(y00 * 1/prob00)/sum(1/prob00))
+y11_y00_8b <- with(data8b, sum(y11 * 1/prob11)/sum(1/prob11) - sum(y00 * 1/prob00)/sum(1/prob00))
+
+y01_y00_8b
+y10_y00_8b
+y11_y00_8b
+
+
+### c) spillover non-experimental
+data8c <- read.csv("non_experimental_hotspots.csv", stringsAsFactors = F)
+y10_y00_8c <- with(
+  subset(data8c, prob10 > 0),
+  sum(y10 * 1/prob10)/sum(1/prob10) - sum(y00 * 1/prob00)/sum(1/prob00)
+  )
+y10_y00_8c
+
+
