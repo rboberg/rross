@@ -75,8 +75,6 @@ turnout.e = aggregate(turnout ~ contact + treat2, data3, function(x){return(c(me
 turnout.e.adj = turnout.e
 turnout.e.adj[turnout.e.adj$contact==0 & turnout.e.adj$treat2==1,3][1] <- turnout.e[turnout.e$contact==0 & turnout.e$treat2==1,3][1] - 0.01
 
-
-
 # calculate new treatment turnout as weigthed average of complier and
 # non complier turnout
 treatment.turnout.adj.e <- with(subset(turnout.e.adj, treat2==1), sum(turnout[,'mean']*turnout[,'n'])/sum(turnout[,'n']))
