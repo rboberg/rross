@@ -11,8 +11,8 @@ library(foreign)
 
 # set wd
 #setwd('F:/Docs/Personal/rross/MIDS/FieldExperiments/PS4')
-setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS4')
-#setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS4')
+#setwd('C:/Users/Ross/Documents/R/rross/MIDS/FieldExperiments/PS4')
+setwd('C:/Users/Ross/Documents/GitHub/rross/MIDS/FieldExperiments/PS4')
 
 #Function to compute clustered standard errors in R
 cl <- function(dat, fm, cluster){
