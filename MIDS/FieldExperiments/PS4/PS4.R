@@ -68,27 +68,55 @@ compliance.rate <- with(subset(data3, treat2 == 1), mean(contact))
 cace3 <- itt3 / compliance.rate
 cace3
 
-### d) turnout without leaflet
-# Assuming this is just asking us to subtract 1% from treatment turnout rate
-turnout.noleaflet <- turnout
-turnout.noleaflet[2,2] <- turnout[2,2] - 0.01
-turnout.noleaflet
+### e) turnout without leaflet
+# adjust turnout rate of noncompliers in the treatment group down by 1%
+# but leave the compliers alone since we want to include the effect of the leaflet
+turnout.e = aggregate(turnout ~ contact + treat2, data3, function(x){return(c(mean=mean(x),n=length(x)))})
+turnout.e.adj = turnout.e
+turnout.e.adj[turnout.e.adj$contact==0 & turnout.e.adj$treat2==1,3][1] <- turnout.e[turnout.e$contact==0 & turnout.e$treat2==1,3][1] - 0.01
 
-### e) CACE without leaflet
-cace3.noleaflet <- (turnout.noleaflet[2,2]-turnout.noleaflet[1,2])/compliance.rate
-cace3.noleaflet
+
+
+# calculate new treatment turnout as weigthed average of complier and
+# non complier turnout
+treatment.turnout.adj.e <- with(subset(turnout.e.adj, treat2==1), sum(turnout[,'mean']*turnout[,'n'])/sum(turnout[,'n']))
+control.turnout.e <- with(subset(turnout.e.adj, treat2==0), turnout[,'mean'])
+
+# calculate new ITT
+itt3e <- treatment.turnout.adj.e - control.turnout.e
+itt3e
+
+# calculate new CACE
+cace3e <- itt3e / compliance.rate
+cace3e
+
+# ### e) CACE without leaflet
+# This is how I originally did it because I thought we wanted to 
+# exclude the effect of the leaflet
+# # Assuming this is just asking us to subtract 1% from treatment turnout rate
+# turnout.noleaflet <- turnout
+# turnout.noleaflet[2,2] <- turnout[2,2] - 0.01
+# turnout.noleaflet
+# 
+# cace3.noleaflet <- (turnout.noleaflet[2,2]-turnout.noleaflet[1,2])/compliance.rate
+# cace3.noleaflet
+
 
 ### f) CACE no effect on compliers
 
 # adjust turnout rate of noncompliers in the treatment group down by 3%
 turnout.f = aggregate(turnout ~ contact + treat2, data3, function(x){return(c(mean=mean(x),n=length(x)))})
-turnout.fadj = turnout.f
-turnout.fadj[turnout.fadj$contact==0 & turnout.fadj$treat2==1,3][1] <- turnout.f[turnout.f$contact==0 & turnout.f$treat2==1,3][1] - 0.03
+turnout.f.adj = turnout.f
+turnout.f.adj[turnout.f.adj$contact==0 & turnout.f.adj$treat2==1,3][1] <- turnout.f[turnout.f$contact==0 & turnout.f$treat2==1,3][1] - 0.03
+
+
+# calculate new treatment turnout as weigthed average of complier and
+# non complier turnout
+treatment.turnout.adj.f <- with(subset(turnout.f.adj, treat2==1), sum(turnout[,'mean']*turnout[,'n'])/sum(turnout[,'n']))
+control.turnout.f <- with(subset(turnout.f.adj, treat2==0), turnout[,'mean'])
 
 # calculate new ITT
-control.turnout.adj <- with(subset(turnout.fadj, treat2==1), sum(turnout[,'mean']*turnout[,'n'])/sum(turnout[,'n']))
-treatment.turnout <- with(subset(turnout.fadj, treat2==0), turnout[,'mean'])
-itt3f <- control.turnout.adj - treatment.turnout
+itt3f <- treatment.turnout.adj.f - control.turnout.f
 itt3f
 
 # calculate new CACE
