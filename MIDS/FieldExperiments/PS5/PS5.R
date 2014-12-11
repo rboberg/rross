@@ -55,15 +55,15 @@ summary(lm(week0 ~ treatment_ad_exposures, data1))
 
 # C) Why does the Placebo test look like this & what do you need to change?
 
-The placebo test turns out to be highly significant because sales seem to
-be high for users who go online alot. If you look at the average purchasees
-BEFORE the campaing started grouped by the total exposures of each subject
-you see that people who had more total exposures also had more purchases.
-On average people with no exposures bought 1.5, those with 1 bought 2.2, and
-those with 2 bought 3. It is this selection bias that the regression picks up.
-We can control for the selection bias by including fixed effects for the 
-total number of exposures. This way the regression can tease out differences
-in purchases correlated with more total exposures versus more treatment exposures.
+# The placebo test turns out to be highly significant because sales seem to
+# be high for users who go online alot. If you look at the average purchasees
+# BEFORE the campaing started grouped by the total exposures of each subject
+# you see that people who had more total exposures also had more purchases.
+# On average people with no exposures bought 1.5, those with 1 bought 2.2, and
+# those with 2 bought 3. It is this selection bias that the regression picks up.
+# We can control for the selection bias by including fixed effects for the 
+# total number of exposures. This way the regression can tease out differences
+# in purchases correlated with more total exposures versus more treatment exposures.
 
 # look at purchases by total exposures
 cond_week0 = aggregate(week0 ~ total_exposures, data1, mean)
@@ -115,7 +115,7 @@ data2 = read.csv('ps5_no2.csv')
 lm2a = lm(income ~ years_education, data2)
 summary(lm2a)
 
-# C) Education on Draft Number
+# C) Education on Draft Rank
 
 # make high_draft variable
 data2$high_draft = data2$draft_number <= 80
@@ -124,4 +124,36 @@ data2$high_draft = data2$draft_number <= 80
 lm2c = lm(years_education ~ high_draft, data2)
 
 # clustered standard errors
-cl(data1, lm2c, data2$draft_number)
+cl(data2, lm2c, data2$draft_number)
+
+
+
+# D) Income on Draft Rank
+
+# regression
+lm2d = lm(income ~ high_draft, data2)
+
+# clustered standard errors
+cl(data2, lm2d, data2$draft_number)
+
+
+# E) Effect of Education on Income
+
+lm2d$coef[2] / lm2c$coef[2]
+
+
+# G) Differential Attrition
+
+# count observations per draft number
+data2agg = as.data.frame(table(data2$draft_number))
+
+# reformat dataframe
+colnames(data2agg) = c('draft_number', 'count')
+data2agg$draft_number = as.numeric(data2agg$draft_number)
+
+# make high_draft bool
+data2agg$high_draft = data2agg$draft_number <= 80
+
+# run regression
+lm2g = lm(count ~ high_draft, data2agg)
+summary(lm2g)
