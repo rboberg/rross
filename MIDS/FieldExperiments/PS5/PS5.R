@@ -163,7 +163,7 @@ summary(lm2g)
 ### Problem 3 - FE 11.6
 
 # copy info from book
-n3 = data.frame(
+data3 = data.frame(
   study = c('m2006', 'm2007', 'i2009'),
   n_c = c(26481, 348277, 15676),
   n_c_v = c(8755, 88960, 2600),
@@ -171,59 +171,35 @@ n3 = data.frame(
   n_t_v = c(2123, 3791, 1936)
   )
 
-with(n3, n_t_v/n_t - n_c_v/n_c)
-
-# create entire data
-data3 = data.frame(study=c(), treat=c(), vote=c())
-for(i in 1:nrow(n3)){
-  di = n3[i,]
-  study = rep(di$study, di$n_c + di$n_t) 
-  treat = c(rep(0, di$n_c), rep(1, di$n_t))
-  vote = rep(0,length(study))
-  vote[1:di$n_c_v] = 1
-  vote[(di$n_c + 1):(di$n_c + di$n_t_v)] = 1
-  
-  data3 = rbind(data3, data.frame(
-    study = study,
-    treat = treat,
-    vote = vote
-    ))
-}
-
 # A & B) Estimate ATE, SE, and Precision of the studies
-studies = unique(data3$study)
-
-# lm for each study
-lm3list = list()
-ates = c()
-ses = c()
-for(x in studies){
-  lm3list[[x]] = lm(vote~treat, subset(data3, study == x))
-  ates[x] = lm3list[[x]]$coef[2]
-  ses[x] = summary(lm3list[[x]])$coef[2,2]
-  }
+data3 = transform(data3, p_c = n_c_v/n_c, p_t = n_t_v/n_t)
+data3 = transform(data3,
+               ate = p_t - p_c,
+               se = sqrt(p_t*(1-p_t)/n_t + p_c*(1-p_c)/n_c)
+               )
+data3$pre = (data3$se)^-2
 
 # The ATEs
-ates
+data3$ate
 
 # The SEs
-ses
+data3$se
 
 # The Precision
-prs = ses^-2
-prs
+data3$pre
 
 # C) Precision Weighted Average ATE
 
-ate3c = sum(ates * prs) / sum(prs)
+ate3c = with(data3, sum(ate * pre) / sum(pre))
 ate3c
 
 # E) Pooled SE & CI
 
 # SE
-se3c = sqrt(1/sum(prs))
+se3c = sqrt(1/sum(data3$pre))
 se3c
 
 # CI
 ci3c = ate3c + se3c * 1.96 * c(-1,1)
 ci3c
+
