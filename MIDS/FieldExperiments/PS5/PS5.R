@@ -8,6 +8,19 @@
 ### Functions & Libraries
 library(ggplot2)
 
+#Function to compute clustered standard errors in R
+cl <- function(dat, fm, cluster){
+  require(sandwich, quietly = TRUE)
+  require(lmtest, quietly = TRUE)
+  M <- length(unique(cluster))
+  N <- length(cluster)
+  K <- fm$rank
+  dfc <- (M/(M-1))*((N-1)/(N-K))
+  uj <- apply(estfun(fm),2, function(x) tapply(x, cluster, sum));
+  vcovCL <- dfc*sandwich(fm, meat=crossprod(uj)/N)
+  coeftest(fm, vcovCL)
+}
+
 ################################################
 ### Problem 1 - Yahoo Ad Natural Experiment
 
@@ -91,3 +104,24 @@ summary(lm(week2_10 ~ treatment_ad_exposures + total_exposures, data1))
 
 # run model
 summary(lm(week1 ~ treatment_ad_exposures*product_a + total_exposures, data1))
+
+
+##################################################
+### Problem 2 - Vietnam Draft
+
+data2 = read.csv('ps5_no2.csv')
+
+# A) Naive Regression
+lm2a = lm(income ~ years_education, data2)
+summary(lm2a)
+
+# C) Education on Draft Number
+
+# make high_draft variable
+data2$high_draft = data2$draft_number <= 80
+
+# regression
+lm2c = lm(years_education ~ high_draft, data2)
+
+# clustered standard errors
+cl(data1, lm2c, data2$draft_number)
