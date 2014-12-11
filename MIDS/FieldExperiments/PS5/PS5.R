@@ -157,3 +157,73 @@ data2agg$high_draft = data2agg$draft_number <= 80
 # run regression
 lm2g = lm(count ~ high_draft, data2agg)
 summary(lm2g)
+
+
+##################################################
+### Problem 3 - FE 11.6
+
+# copy info from book
+n3 = data.frame(
+  study = c('m2006', 'm2007', 'i2009'),
+  n_c = c(26481, 348277, 15676),
+  n_c_v = c(8755, 88960, 2600),
+  n_t = c(5310, 12391, 9326),
+  n_t_v = c(2123, 3791, 1936)
+  )
+
+with(n3, n_t_v/n_t - n_c_v/n_c)
+
+# create entire data
+data3 = data.frame(study=c(), treat=c(), vote=c())
+for(i in 1:nrow(n3)){
+  di = n3[i,]
+  study = rep(di$study, di$n_c + di$n_t) 
+  treat = c(rep(0, di$n_c), rep(1, di$n_t))
+  vote = rep(0,length(study))
+  vote[1:di$n_c_v] = 1
+  vote[(di$n_c + 1):(di$n_c + di$n_t_v)] = 1
+  
+  data3 = rbind(data3, data.frame(
+    study = study,
+    treat = treat,
+    vote = vote
+    ))
+}
+
+# A & B) Estimate ATE, SE, and Precision of the studies
+studies = unique(data3$study)
+
+# lm for each study
+lm3list = list()
+ates = c()
+ses = c()
+for(x in studies){
+  lm3list[[x]] = lm(vote~treat, subset(data3, study == x))
+  ates[x] = lm3list[[x]]$coef[2]
+  ses[x] = summary(lm3list[[x]])$coef[2,2]
+  }
+
+# The ATEs
+ates
+
+# The SEs
+ses
+
+# The Precision
+prs = ses^-2
+prs
+
+# C) Precision Weighted Average ATE
+
+ate3c = sum(ates * prs) / sum(prs)
+ate3c
+
+# E) Pooled SE & CI
+
+# SE
+se3c = sqrt(1/sum(prs))
+se3c
+
+# CI
+ci3c = ate3c + se3c * 1.96 * c(-1,1)
+ci3c
