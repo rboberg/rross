@@ -92,7 +92,7 @@ data1$week1_10 = apply(data1[,paste0('week',1:10)], 1, sum)
 # run model
 summary(lm(week1_10 ~ treatment_ad_exposures + total_exposures, data1))
 
-# E) Effect on week 2 through 10
+# H) Effect on week 2 through 10
 
 # add variable that sums week 2 through 10
 data1$week2_10 = apply(data1[,paste0('week',2:10)], 1, sum)
